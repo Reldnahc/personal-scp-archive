@@ -1,0 +1,69 @@
+.article-body .case-section + .case-section {
+  margin-top: 4.5rem;
+  padding-top: 2rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 { margin-top: 0; }
+
+.article-body .transcript {
+  margin: 2rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid #82755b;
+  border-left: 4px solid #4c4435;
+  background: rgba(92, 78, 52, .08);
+}
+
+.article-body .transcript::before {
+  content: 'TRANSCRIPT';
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--ink-faded);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.article-body .transcript p { margin: .6rem 0; }
+.article-body .stage-direction { color: var(--ink-faded); font-style: italic; }
+
+.article-body .test-record {
+  margin: 2rem 0;
+  padding: 1.2rem 1.35rem;
+  border: 1px solid #918267;
+  border-left: 4px solid #514838;
+  background: rgba(93, 80, 55, .07);
+}
+
+.article-body .test-record > h3 {
+  margin: 0 0 1rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid #a39577;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.article-body .test-record .transcript { margin-bottom: .3rem; }
+
+.article-body blockquote {
+  margin: 1.8rem 0;
+  padding: 1rem 1.3rem;
+  border-left: 4px solid #665b46;
+  background: rgba(111, 92, 57, .08);
+}
+
+.article-body blockquote p:first-child { margin-top: 0; }
+.article-body blockquote p:last-child { margin-bottom: 0; }
+
+.article-body .finding {
+  margin: 1.7rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--blood);
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  .article-body .transcript,
+  .article-body .test-record { padding-inline: 1rem; }
+}

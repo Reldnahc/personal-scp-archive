@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-5239",
+  "slug": "no-change-in-answers",
+  "title": "No Change in Answers",
+  "objectClass": "Safe",
+  "description": "An obsolete execution apparatus recognizes living subjects in places Foundation instruments cannot measure.",
+  "tags": [
+    "artificial-intelligence",
+    "consciousness",
+    "electromechanical",
+    "historical"
+  ],
+  "dateAdded": "2026-08-25",
+  "status": "published",
+  "contentWarnings": [
+    "death",
+    "animal testing",
+    "medical experimentation"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

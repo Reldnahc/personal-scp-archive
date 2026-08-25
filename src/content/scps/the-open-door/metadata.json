@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-9749",
+  "slug": "the-open-door",
+  "title": "The Open Door",
+  "objectClass": "Euclid",
+  "description": "Direct observation of an unknown presence creates a persistent need to open the door behind it.",
+  "tags": [
+    "compulsion",
+    "location",
+    "perception",
+    "door"
+  ],
+  "dateAdded": "2026-08-25",
+  "status": "published",
+  "contentWarnings": [
+    "violence",
+    "injury",
+    "psychological compulsion"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

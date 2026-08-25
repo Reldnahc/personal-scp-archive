@@ -1,0 +1,13 @@
+{
+  "id": null,
+  "slug": "replace-with-folder-name",
+  "title": "Replace with article title",
+  "objectClass": "Unclassified",
+  "description": "Replace with a short archive description.",
+  "tags": [],
+  "dateAdded": "YYYY-MM-DD",
+  "status": "draft",
+  "contentWarnings": [],
+  "sources": [],
+  "mode": "standard"
+}

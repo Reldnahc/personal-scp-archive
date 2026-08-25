@@ -1,0 +1,83 @@
+{
+  "generated": true,
+  "articles": [
+    {
+      "id": "SCP-AI-5239",
+      "slug": "no-change-in-answers",
+      "title": "No Change in Answers",
+      "objectClass": "Safe",
+      "description": "An obsolete execution apparatus recognizes living subjects in places Foundation instruments cannot measure.",
+      "tags": [
+        "artificial-intelligence",
+        "consciousness",
+        "electromechanical",
+        "historical"
+      ],
+      "dateAdded": "2026-08-25",
+      "status": "published",
+      "contentWarnings": [
+        "death",
+        "animal testing",
+        "medical experimentation"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/no-change-in-answers/index.html",
+      "assetBase": "generated/scps/no-change-in-answers/"
+    },
+    {
+      "id": "SCP-AI-7412",
+      "slug": "the-one-who-stayed-behind",
+      "title": "The One Who Stayed Behind",
+      "objectClass": "Safe",
+      "description": "An abandoned coal mine calls the people who have already returned from it.",
+      "tags": [
+        "location",
+        "mine",
+        "telephone",
+        "duplication"
+      ],
+      "dateAdded": "2026-08-25",
+      "status": "published",
+      "contentWarnings": [
+        "death",
+        "claustrophobia",
+        "strong language"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/the-one-who-stayed-behind/index.html",
+      "assetBase": "generated/scps/the-one-who-stayed-behind/"
+    },
+    {
+      "id": "SCP-AI-9749",
+      "slug": "the-open-door",
+      "title": "The Open Door",
+      "objectClass": "Euclid",
+      "description": "Direct observation of an unknown presence creates a persistent need to open the door behind it.",
+      "tags": [
+        "compulsion",
+        "location",
+        "perception",
+        "door"
+      ],
+      "dateAdded": "2026-08-25",
+      "status": "published",
+      "contentWarnings": [
+        "violence",
+        "injury",
+        "psychological compulsion"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/the-open-door/index.html",
+      "assetBase": "generated/scps/the-open-door/"
+    }
+  ]
+}

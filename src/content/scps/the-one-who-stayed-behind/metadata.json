@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-7412",
+  "slug": "the-one-who-stayed-behind",
+  "title": "The One Who Stayed Behind",
+  "objectClass": "Safe",
+  "description": "An abandoned coal mine calls the people who have already returned from it.",
+  "tags": [
+    "location",
+    "mine",
+    "telephone",
+    "duplication"
+  ],
+  "dateAdded": "2026-08-25",
+  "status": "published",
+  "contentWarnings": [
+    "death",
+    "claustrophobia",
+    "strong language"
+  ],
+  "sources": [],
+  "mode": "standard"
+}
