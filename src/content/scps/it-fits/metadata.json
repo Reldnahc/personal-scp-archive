@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-1918",
+  "slug": "it-fits",
+  "title": "It Fits",
+  "objectClass": "Keter",
+  "description": "A large predatory organism can force its unchanged mass through openings no wider than structural defects.",
+  "tags": [
+    "organism",
+    "spatial-anomaly",
+    "predatory",
+    "containment-breach"
+  ],
+  "dateAdded": "2026-08-25",
+  "status": "published",
+  "contentWarnings": [
+    "death",
+    "child death",
+    "body horror"
+  ],
+  "sources": [],
+  "mode": "standard"
+}
