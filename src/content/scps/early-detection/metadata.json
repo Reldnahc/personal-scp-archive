@@ -1,0 +1,20 @@
+{
+  "id": "SCP-AI-3597",
+  "slug": "early-detection",
+  "title": "Early Detection",
+  "objectClass": "Safe",
+  "description": "An ultrasound system diagnoses conditions before conventional medicine can detect them, but a second examination never gives the same answer.",
+  "tags": [
+    "medical",
+    "diagnostic",
+    "predictive",
+    "temporal"
+  ],
+  "dateAdded": "2026-08-26",
+  "status": "published",
+  "contentWarnings": [
+    "serious illness"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

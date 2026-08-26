@@ -1,0 +1,9 @@
+.article-body .case-section + .case-section {
+  margin-top: 3.75rem;
+  padding-top: 1.75rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 {
+  margin-top: 0;
+}
