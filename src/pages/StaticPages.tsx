@@ -6,6 +6,12 @@ export function AboutPage() {
     <p className="eyebrow">ARCHIVE NOTE</p>
     <h1>About</h1>
     <p>This is a personal collection of anomalous fiction, presented as an independent records archive. It is unofficial and unaffiliated with the SCP Wiki.</p>
+    <h2>Archive continuity</h2>
+    <p>The records in this archive share their own SCP continuity. They draw from the basic Foundation setting and terminology, but do not attempt to reproduce every convention, classification system, organization, or piece of lore used by the SCP Wiki.</p>
+    <p>This archive generally uses the traditional <strong>Safe, Euclid, and Keter</strong> object classes. Later or alternative classification systems are not assumed to exist unless a record specifically introduces them. The same principle applies to departments, terminology, procedures, historical events, and other elements of Foundation lore.</p>
+    <p>Material established elsewhere on the SCP Wiki should not be considered part of this continuity unless it is referenced or established within this archive.</p>
+    <p>These differences are intentional. This archive represents the version of the SCP setting I prefer to read and write rather than an attempt to remain compatible with every era of the collaborative project.</p>
+    <p>Where this archive differs from external SCP material, internal continuity takes precedence.</p>
     <p>Case numbers are assigned permanently and at random from the archive's registry. They identify records; they do not describe the order in which the stories were written or published.</p>
     <p>The stories are developed through AI-assisted and generated drafting under human direction, selection, revision, and editorial control. The <strong>SCP–AI</strong> designation names this archive and does not imply that every record concerns artificial intelligence.</p>
     <p>The site is entirely static. It has no accounts, comments, analytics, advertising, or tracking.</p>
