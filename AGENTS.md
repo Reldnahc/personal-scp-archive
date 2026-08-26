@@ -56,10 +56,11 @@ For every new article:
 4. D-class numbers and generic job titles do not require entries unless they function as a character name.
 5. Compare the proposed names against all existing registry entries, including entries for deleted stories.
 6. Check exact names and surnames. Also manually examine similar first names, initials, phonetic variants, and conspicuously repeated genre-style names that automated validation cannot detect.
-7. Assume cross-article reuse is accidental unless the story or user clearly establishes continuity.
-8. Prefer changing an incidental name in the new article. Do not casually rename a central name, title-bearing name, acronym, or reveal; ask the user when that judgment is materially ambiguous.
-9. If reuse is intentional, add a narrowly scoped `approvedReuse` entry with `type`, `value`, every involved article slug, and a clear `reason`.
-10. Set `"reviewed": true` only after completing this examination.
+7. Treat exact full-name, known-surname, and distinctive named-entity reuse as a likely accidental continuity signal unless the story or user establishes otherwise.
+8. First-name reuse alone is permitted and does not normally require a rename or `approvedReuse` entry. Common first names may recur naturally. Use editorial judgment when the same first names appear unusually often, form a conspicuous pattern, or contribute to repetitive AI-genre naming.
+9. For a likely accidental collision, prefer changing an incidental name in the new article. Do not casually rename a central name, title-bearing name, acronym, or reveal; ask the user when that judgment is materially ambiguous.
+10. If reuse is intentional and would otherwise trigger validation, add a narrowly scoped `approvedReuse` entry with `type`, `value`, every involved article slug, and a clear `reason`.
+11. Set `"reviewed": true` only after completing this examination.
 
 Never delete a historical name-registry entry merely because its article was removed. Retaining it prevents accidental future reuse.
 

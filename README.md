@@ -129,6 +129,8 @@ Every article folder, including drafts, must have a matching review entry. `npm 
 
 The validator cannot reliably infer every fictional name from unrestricted HTML, so adding all relevant names remains an explicit editorial review step. The enforced per-story entry ensures that step cannot be skipped silently. Do not delete old story entries merely because an article is removed; keeping them prevents accidental future reuse.
 
+First-name overlap by itself is allowed and normally needs no registry exception. Common first names can recur naturally. During review, treat them as a softer editorial signal: consider a rename only when repetition is unusually frequent, conspicuously patterned, or contributes to samey AI-genre naming. Exact full names, known surnames, and distinctive named entities remain the stronger continuity risks enforced by validation.
+
 A normal review entry looks like this:
 
 ```json
