@@ -26,6 +26,7 @@ The public URL for an assigned record is `#/scp/scp-ai-####`. Its source folder 
 ├─ src/
 │  ├─ content/
 │  │  ├─ id-registry.json              Permanent, tracked ID history
+│  │  ├─ name-registry.json            Reviewed names and reuse decisions
 │  │  └─ scps/                         One self-contained folder per story
 │  ├─ generated/content-manifest.json  Generated; consumed by React
 │  ├─ pages/                            Home, archive, article, static pages
@@ -80,8 +81,9 @@ Then:
 
 1. Change `slug` to `my-new-story`, fill in the other metadata, and write `index.html`.
 2. Leave `id` as `null`. A draft can stay unnumbered; change `status` to `published` when ready.
-3. Optionally add `style.css`, `script.js`, and an `assets/` directory.
-4. Assign and inspect a permanent number:
+3. Review every named person or named entity against `src/content/name-registry.json`. Add the story slug with `"reviewed": true` and list its names, surnames (or `null` when unknown/redacted), and roles. Rename accidental collisions or document an intentional one in `approvedReuse` with a reason.
+4. Optionally add `style.css`, `script.js`, and an `assets/` directory.
+5. Assign and inspect a permanent number:
 
    ```bash
    npm run assign-ids
@@ -89,7 +91,7 @@ Then:
    npm run dev
    ```
 
-5. Commit the story folder **and** `src/content/id-registry.json`, then push.
+6. Commit the story folder, `src/content/id-registry.json`, `src/content/name-registry.json`, and the regenerated manifest, then push.
 
 No React import or central article list needs editing. Discovery scans every direct child folder of `src/content/scps/`.
 
@@ -115,6 +117,40 @@ Each `metadata.json` is a small JSON object:
 All listed fields except `displayOrder`, `sources`, and `mode` are required. `id` may be `null`. Drafts can be unnumbered, but published records cannot; validation tells you to run `npm run assign-ids`. Archived entries remain valid and reserved but are not included in the public manifest.
 
 Malformed JSON, bad dates or statuses, a slug/folder mismatch, missing `index.html`, invalid/out-of-range IDs, duplicate IDs, and registry conflicts fail loudly. Broken story folders are never silently skipped.
+
+## Character and entity name registry
+
+`src/content/name-registry.json` is the durable index of names already used by the archive. It includes people, named artificial systems, and other story-specific named entities worth protecting from accidental reuse. Redacted or unknown surnames use `null`; identifiers such as D-class numbers do not need entries.
+
+Every article folder, including drafts, must have a matching review entry. `npm run validate` fails when one is missing. It also compares normalized exact names and known surnames across all registry entries, including entries for stories later deleted. A collision must be resolved in one of two ways:
+
+1. change the incidental name in the new article and record the replacement; or
+2. if the reuse is deliberate, add an `approvedReuse` entry containing `type`, `value`, every involved article slug, and a plain-language `reason`.
+
+The validator cannot reliably infer every fictional name from unrestricted HTML, so adding all relevant names remains an explicit editorial review step. The enforced per-story entry ensures that step cannot be skipped silently. Do not delete old story entries merely because an article is removed; keeping them prevents accidental future reuse.
+
+A normal review entry looks like this:
+
+```json
+"my-new-story": {
+  "reviewed": true,
+  "names": [
+    { "name": "Dr. Avery Example", "surname": "Example", "role": "Foundation researcher" },
+    { "name": "Morgan [REDACTED]", "surname": null, "role": "civilian witness" }
+  ]
+}
+```
+
+When reuse is intentional, document the decision instead of weakening the rule globally:
+
+```json
+{
+  "type": "surname",
+  "value": "Example",
+  "articles": ["earlier-story", "my-new-story"],
+  "reason": "The characters are members of the same family."
+}
+```
 
 ## Discovery and generated files
 
@@ -226,6 +262,8 @@ The Sigma-10 type stack—Inter, Sans Normalcy, and RedactRect—is bundled loca
 
 - **Published article has no ID:** run `npm run assign-ids`, inspect both changed JSON files, and commit them.
 - **Registry must map an ID:** run `npm run assign-ids` to register a valid manually supplied metadata ID. A conflicting historical owner must be resolved deliberately.
+- **Missing name review:** add the article slug and its reviewed names to `src/content/name-registry.json`.
+- **Name or surname is reused:** rename the incidental character, or add a narrowly scoped `approvedReuse` entry with the reason the continuity is intentional.
 - **Slug mismatch:** make the `slug` value exactly equal to its parent folder name.
 - **Article missing from the archive:** it must be `published`, numbered, valid, and followed by a dev-server restart if the folder was created while Vite was already running.
 - **Asset is missing:** use a relative path such as `assets/image.png`, check exact filename casing (Linux deployment is case-sensitive), and keep it inside the story folder.

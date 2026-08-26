@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "articles": {
+    "it-fits": {
+      "reviewed": true,
+      "names": [
+        { "name": "Daniel [REDACTED]", "surname": null, "role": "missing family member" },
+        { "name": "Rebecca [REDACTED]", "surname": null, "role": "missing family member" },
+        { "name": "Thomas [REDACTED]", "surname": null, "role": "missing child" },
+        { "name": "Erin [REDACTED]", "surname": null, "role": "missing child" },
+        { "name": "Martin Rook", "surname": "Rook", "role": "containment technician" }
+      ]
+    },
+    "no-change-in-answers": {
+      "reviewed": true,
+      "names": [
+        { "name": "Elizabeth Hart", "surname": "Hart", "role": "Foundation researcher" },
+        { "name": "CASSANDRA", "surname": null, "role": "Foundation artificial intelligence" },
+        { "name": "MIRIAM BELL", "surname": "Bell", "role": "electromechanical computing project" },
+        { "name": "Walter [REDACTED]", "surname": null, "role": "hospital superintendent" },
+        { "name": "Nathan Mercer", "surname": "Mercer", "role": "electrical engineer" },
+        { "name": "Margaret E. [REDACTED]", "surname": null, "role": "historical test subject" },
+        { "name": "Harold J. [REDACTED]", "surname": null, "role": "historical test subject" },
+        { "name": "Samuel R. [REDACTED]", "surname": null, "role": "historical test subject" },
+        { "name": "Anne P. [REDACTED]", "surname": null, "role": "historical test subject" }
+      ]
+    },
+    "the-one-who-stayed-behind": {
+      "reviewed": true,
+      "names": [
+        { "name": "Matthew Keene", "surname": "Keene", "role": "amateur explorer" },
+        { "name": "Derek [REDACTED]", "surname": null, "role": "amateur explorer" },
+        { "name": "Laura [surname unknown]", "surname": null, "role": "amateur explorer" },
+        { "name": "Michael Mallory", "surname": "Mallory", "role": "Foundation agent" },
+        { "name": "Nolan Pike", "surname": "Pike", "role": "Foundation researcher" }
+      ]
+    },
+    "the-open-door": {
+      "reviewed": true,
+      "names": [
+        { "name": "Thomas Vale", "surname": "Vale", "role": "night supervisor" },
+        { "name": "Marcus Ward", "surname": "Ward", "role": "water-treatment employee" },
+        { "name": "Dr. Morland", "surname": "Morland", "role": "Foundation researcher" },
+        { "name": "H. Patel", "surname": "Patel", "role": "Foundation research assistant" },
+        { "name": "Agent Keller", "surname": "Keller", "role": "Foundation interrogator" }
+      ]
+    }
+  },
+  "approvedReuse": []
+}

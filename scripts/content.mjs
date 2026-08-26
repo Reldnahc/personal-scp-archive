@@ -14,6 +14,7 @@ const option = (name, fallback) => {
 };
 const contentRoot = option('--content-root', path.join(ROOT, 'src/content/scps'));
 const registryPath = option('--registry', path.join(ROOT, 'src/content/id-registry.json'));
+const nameRegistryPath = option('--name-registry', path.join(ROOT, 'src/content/name-registry.json'));
 const manifestPath = option('--manifest', path.join(ROOT, 'src/generated/content-manifest.json'));
 const publicRoot = option('--public-root', path.join(ROOT, 'public/generated/scps'));
 const ID_PATTERN = /^SCP-AI-(\d{4})$/;
@@ -43,6 +44,102 @@ async function loadRegistry() {
     throw new ContentError('ID registry must contain { "version": 1, "assignments": {} }.');
   }
   return registry;
+}
+
+async function loadNameRegistry() {
+  if (!(await exists(nameRegistryPath))) throw new ContentError(`Name registry is missing: ${nameRegistryPath}`);
+  return readJson(nameRegistryPath, 'Name registry');
+}
+
+const normalizeName = (value) => value.trim().replace(/\s+/g, ' ').toLocaleLowerCase('en-US');
+
+function validateNameRegistry(registry, articles, errors) {
+  if (!registry || typeof registry !== 'object' || Array.isArray(registry) || registry.version !== 1) {
+    errors.push('Name registry must contain { "version": 1, "articles": {}, "approvedReuse": [] }.');
+    return;
+  }
+  if (!registry.articles || typeof registry.articles !== 'object' || Array.isArray(registry.articles)) {
+    errors.push('Name registry articles must be an object keyed by story slug.');
+    return;
+  }
+  if (!Array.isArray(registry.approvedReuse)) {
+    errors.push('Name registry approvedReuse must be an array.');
+    return;
+  }
+
+  const uses = { name: new Map(), surname: new Map() };
+  for (const article of articles) {
+    if (!registry.articles[article.folderName]) {
+      errors.push(`${article.folderName}: missing name review in src/content/name-registry.json`);
+    }
+  }
+
+  for (const [slug, review] of Object.entries(registry.articles)) {
+    if (!review || typeof review !== 'object' || Array.isArray(review)) {
+      errors.push(`Name registry ${slug}: review must be an object`);
+      continue;
+    }
+    if (review.reviewed !== true) errors.push(`Name registry ${slug}: reviewed must be true after checking the article`);
+    if (!Array.isArray(review.names)) {
+      errors.push(`Name registry ${slug}: names must be an array`);
+      continue;
+    }
+    const localNames = new Set();
+    for (const [index, entry] of review.names.entries()) {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+        errors.push(`Name registry ${slug}: names[${index}] must be an object`);
+        continue;
+      }
+      if (typeof entry.name !== 'string' || !entry.name.trim()) {
+        errors.push(`Name registry ${slug}: names[${index}].name must be a non-empty string`);
+        continue;
+      }
+      if (typeof entry.role !== 'string' || !entry.role.trim()) errors.push(`Name registry ${slug}: names[${index}].role must be a non-empty string`);
+      if (entry.surname !== null && (typeof entry.surname !== 'string' || !entry.surname.trim())) {
+        errors.push(`Name registry ${slug}: names[${index}].surname must be a non-empty string or null`);
+      }
+      const fullName = normalizeName(entry.name);
+      if (localNames.has(fullName)) errors.push(`Name registry ${slug}: duplicate name entry ${entry.name}`);
+      localNames.add(fullName);
+      if (!uses.name.has(fullName)) uses.name.set(fullName, { value: entry.name, slugs: new Set() });
+      uses.name.get(fullName).slugs.add(slug);
+      if (typeof entry.surname === 'string' && entry.surname.trim()) {
+        const surname = normalizeName(entry.surname);
+        if (!uses.surname.has(surname)) uses.surname.set(surname, { value: entry.surname, slugs: new Set() });
+        uses.surname.get(surname).slugs.add(slug);
+      }
+    }
+  }
+
+  const approvals = new Map();
+  for (const [index, approval] of registry.approvedReuse.entries()) {
+    if (!approval || typeof approval !== 'object' || Array.isArray(approval)) {
+      errors.push(`Name registry approvedReuse[${index}] must be an object`);
+      continue;
+    }
+    if (!['name', 'surname'].includes(approval.type)) errors.push(`Name registry approvedReuse[${index}].type must be name or surname`);
+    if (typeof approval.value !== 'string' || !approval.value.trim()) errors.push(`Name registry approvedReuse[${index}].value must be a non-empty string`);
+    if (!Array.isArray(approval.articles) || approval.articles.length < 2 || !approval.articles.every((slug) => typeof slug === 'string' && slug.trim())) {
+      errors.push(`Name registry approvedReuse[${index}].articles must contain at least two story slugs`);
+    }
+    if (typeof approval.reason !== 'string' || !approval.reason.trim()) errors.push(`Name registry approvedReuse[${index}].reason must be a non-empty string`);
+    if (['name', 'surname'].includes(approval.type) && typeof approval.value === 'string') {
+      const key = `${approval.type}:${normalizeName(approval.value)}`;
+      if (approvals.has(key)) errors.push(`Name registry contains duplicate approval for ${approval.type} ${approval.value}`);
+      approvals.set(key, new Set(Array.isArray(approval.articles) ? approval.articles : []));
+    }
+  }
+
+  for (const type of ['name', 'surname']) {
+    for (const [normalized, use] of uses[type]) {
+      if (use.slugs.size < 2) continue;
+      const approval = approvals.get(`${type}:${normalized}`);
+      const missing = [...use.slugs].filter((slug) => !approval?.has(slug));
+      if (!approval || missing.length) {
+        errors.push(`Name registry: ${type} "${use.value}" is reused across ${[...use.slugs].sort().join(', ')}; rename it or document the intentional reuse in approvedReuse`);
+      }
+    }
+  }
 }
 
 async function discover() {
@@ -95,7 +192,7 @@ function validateMetadata(article, errors) {
 }
 
 async function validate({ allowUnassignedPublished = false, allowRegistryMissing = false } = {}) {
-  const [articles, registry] = await Promise.all([discover(), loadRegistry()]);
+  const [articles, registry, nameRegistry] = await Promise.all([discover(), loadRegistry(), loadNameRegistry()]);
   const errors = [];
   const ids = new Map();
   const slugs = new Set();
@@ -120,6 +217,7 @@ async function validate({ allowUnassignedPublished = false, allowRegistryMissing
     if (!ID_PATTERN.test(id) || Number(id.slice(-4)) < 1) errors.push(`Registry contains invalid ID: ${id}`);
     if (typeof slug !== 'string' || !slug) errors.push(`Registry entry ${id} must have a slug value`);
   }
+  validateNameRegistry(nameRegistry, articles, errors);
   if (errors.length) throw new ContentError(`Content validation failed:\n- ${errors.join('\n- ')}`);
   return { articles, registry };
 }

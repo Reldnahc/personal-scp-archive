@@ -9,22 +9,35 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workspace = await mkdtemp(path.join(tmpdir(), 'scp-ai-pipeline-'));
 const content = path.join(workspace, 'scps');
 const registry = path.join(workspace, 'id-registry.json');
+const nameRegistry = path.join(workspace, 'name-registry.json');
 const manifest = path.join(workspace, 'manifest.json');
 const publicRoot = path.join(workspace, 'public');
 await mkdir(content, { recursive: true });
 await writeFile(registry, '{"version":1,"assignments":{}}\n');
+await writeFile(nameRegistry, '{"version":1,"articles":{},"approvedReuse":[]}\n');
 
-const run = (command) => spawnSync(process.execPath, [path.join(root, 'scripts/content.mjs'), command, '--content-root', content, '--registry', registry, '--manifest', manifest, '--public-root', publicRoot], { encoding: 'utf8' });
+const run = (command) => spawnSync(process.execPath, [path.join(root, 'scripts/content.mjs'), command, '--content-root', content, '--registry', registry, '--name-registry', nameRegistry, '--manifest', manifest, '--public-root', publicRoot], { encoding: 'utf8' });
 const metadata = (slug, status = 'draft', extra = {}) => ({ id: null, slug, title: `Title ${slug}`, objectClass: 'Euclid', description: 'Test record.', tags: ['test'], dateAdded: '2026-08-25', status, contentWarnings: [], ...extra });
-async function story(slug, status = 'draft', extra = {}) {
+async function reviewNames(slug, names = []) {
+  const current = JSON.parse(await readFile(nameRegistry, 'utf8'));
+  current.articles[slug] = { reviewed: true, names };
+  await writeFile(nameRegistry, `${JSON.stringify(current, null, 2)}\n`);
+}
+async function story(slug, status = 'draft', extra = {}, reviewed = true) {
   const folder = path.join(content, slug); await mkdir(folder, { recursive: true });
   await writeFile(path.join(folder, 'metadata.json'), `${JSON.stringify(metadata(slug, status, extra), null, 2)}\n`);
   await writeFile(path.join(folder, 'index.html'), '<section><h2>{{SCP_ID}}</h2><p>Marker {{SCP_NUMBER}}-A</p><img src="assets/a.png"></section>');
+  if (reviewed) await reviewNames(slug);
   return folder;
 }
 
 try {
   assert.equal(run('validate').status, 0, 'empty archive validates');
+  await story('unreviewed-draft', 'draft', {}, false);
+  const unreviewed = run('validate');
+  assert.notEqual(unreviewed.status, 0, 'missing name review fails');
+  assert.match(unreviewed.stderr, /missing name review/);
+  await reviewNames('unreviewed-draft');
   await story('quiet-draft');
   assert.equal(run('validate').status, 0, 'unnumbered draft validates');
   const first = await story('first-record', 'published');
@@ -39,6 +52,15 @@ try {
   assert.notEqual(firstMeta.id, secondMeta.id, 'assigned IDs are unique');
   assert.equal(run('assign').status, 0, 'repeat assignment succeeds');
   assert.equal(JSON.parse(await readFile(path.join(first, 'metadata.json'), 'utf8')).id, firstMeta.id, 'existing ID is immutable');
+  await reviewNames('quiet-draft', [{ name: 'Ada Shared', surname: 'Shared', role: 'fixture' }]);
+  await reviewNames('second-record', [{ name: 'Bert Shared', surname: 'Shared', role: 'fixture' }]);
+  const repeatedSurname = run('validate');
+  assert.notEqual(repeatedSurname.status, 0, 'unapproved reused surname fails');
+  assert.match(repeatedSurname.stderr, /surname "Shared" is reused/);
+  const names = JSON.parse(await readFile(nameRegistry, 'utf8'));
+  names.approvedReuse.push({ type: 'surname', value: 'Shared', articles: ['quiet-draft', 'second-record'], reason: 'Pipeline fixture for deliberate reuse.' });
+  await writeFile(nameRegistry, `${JSON.stringify(names, null, 2)}\n`);
+  assert.equal(run('validate').status, 0, 'documented surname reuse validates');
   await rm(first, { recursive: true });
   assert.equal(run('validate').status, 0, 'deleted article leaves valid reserved ID');
   const afterDelete = JSON.parse(await readFile(registry, 'utf8'));
@@ -64,7 +86,7 @@ try {
   const badJson = run('validate');
   assert.notEqual(badJson.status, 0, 'malformed metadata fails');
   assert.match(badJson.stderr, /invalid JSON/);
-  console.log('Content pipeline checks passed: empty, draft, assignment, uniqueness, immutability, reservation, custom CSS, and malformed metadata.');
+  console.log('Content pipeline checks passed: empty, draft, name review, surname reuse approval, assignment, uniqueness, immutability, reservation, custom CSS, and malformed metadata.');
 } finally {
   await rm(workspace, { recursive: true, force: true });
 }
