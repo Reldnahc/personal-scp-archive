@@ -208,12 +208,19 @@
   .page-heading h1, .narrow-page > h1 { margin: 0 0 1rem; color: #1d1913; font: 700 clamp(2.7rem, 6vw, 5rem)/.95 var(--sans); letter-spacing: -.04em; }
   .page-heading > p:last-child { max-width: 650px; color: var(--ink-faded); font-size: 1.02rem; }
 
-  .archive-tools { position: relative; display: grid; grid-template-columns: 2fr 1fr auto; align-items: end; gap: 1rem; padding: 1.1rem 1.2rem; color: #ded5c1; background: #1b1914; border: 5px double #554c3b; box-shadow: 0 6px 14px rgba(40,31,19,.25); }
+  .archive-tools { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: end; gap: 1rem; padding: 1.1rem 1.2rem; color: #ded5c1; background: #1b1914; border: 5px double #554c3b; box-shadow: 0 6px 14px rgba(40,31,19,.25); }
   .archive-tools::before { content: 'CATALOGUE TERMINAL / MANUAL QUERY'; position: absolute; left: 1rem; top: -.7rem; padding: 0 .5rem; color: #9f947d; background: #1b1914; font: .55rem var(--type); letter-spacing: .12em; }
-  .archive-tools label span { display: block; margin-bottom: .35rem; color: #aaa18e; font: 700 .59rem var(--type); letter-spacing: .12em; text-transform: uppercase; }
-  .archive-tools input, .archive-tools select { width: 100%; min-height: 42px; border: 1px solid #645b48; border-radius: 0; padding: .5rem .7rem; color: #e4dac3; background: #0f0e0b; box-shadow: inset 0 2px 7px #000; font-family: var(--type); }
+  .archive-tools label span, .archive-sort legend { display: block; margin-bottom: .35rem; color: #aaa18e; font: 700 .59rem var(--type); letter-spacing: .12em; text-transform: uppercase; }
+  .archive-tools input { width: 100%; min-height: 42px; border: 1px solid #645b48; border-radius: 0; padding: .5rem .7rem; color: #e4dac3; background: #0f0e0b; box-shadow: inset 0 2px 7px #000; font-family: var(--type); }
   .archive-tools input::placeholder { color: #736d60; }
   .archive-tools > p { margin: 0 0 .65rem; color: #aaa18e; font: .63rem var(--type); white-space: nowrap; }
+  .archive-sort { margin: 0; border: 0; padding: 0; }
+  .archive-sort legend { padding: 0; }
+  .archive-sort > div { display: flex; }
+  .archive-sort button { min-height: 42px; cursor: pointer; border: 1px solid #645b48; border-right: 0; padding: .45rem .65rem; color: #aaa18e; background: #0f0e0b; font: 700 .65rem var(--type); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .archive-sort button:last-child { border-right: 1px solid #645b48; }
+  .archive-sort button:hover { color: #e4dac3; background: #29251d; }
+  .archive-sort button[aria-pressed='true'] { color: #f1e7d1; background: var(--blood); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .archive-actions { min-height: 2.6rem; display: flex; align-items: center; gap: .8rem 1.25rem; margin-top: .8rem; color: var(--ink-faded); font-size: var(--text-small); }
   .archive-actions > button, .archive-actions p button { cursor: pointer; color: var(--blood); background: transparent; border: 0; border-bottom: 1px solid currentColor; padding: .25rem 0; }
   .archive-actions .random-file { margin-right: auto; color: var(--ink); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
@@ -237,6 +244,9 @@
   .record-summary li button[aria-pressed='true'] { border-color: #4f1d18; color: #f1e7d1; background: var(--blood); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); }
   .record-meta { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 0; }
   .record-meta dd { margin: .2rem 0 0; font: .7rem var(--type); }
+  .record-class-filter { min-height: 30px; cursor: pointer; border: 1px solid #9a8b6e; border-radius: 0; padding: .2rem .5rem; color: #514839; background: rgba(238,226,197,.18); font: 700 .7rem var(--type); letter-spacing: .035em; text-transform: uppercase; }
+  .record-class-filter:hover { border-color: var(--blood); color: var(--blood); }
+  .record-class-filter[aria-pressed='true'] { border-color: #4f1d18; color: #f1e7d1; background: var(--blood); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16); }
   .record-open { color: var(--blood); font-size: 1.35rem; text-decoration: none; text-align: center; }
 
   .empty-state { position: relative; max-width: 690px; margin: 5rem auto; padding: 3.3rem; text-align: center; }
@@ -364,7 +374,6 @@
   .cover-title h2 { font-size: var(--text-small); line-height: 1.4; letter-spacing: .22em; }
   .cover-register dd { font-size: var(--text-small); line-height: 1.35; }
   .archive-tools input,
-  .archive-tools select,
   .record-summary p,
   .status-panel > p,
   .record-meta dd,
