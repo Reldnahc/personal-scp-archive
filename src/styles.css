@@ -242,6 +242,8 @@
   .record-id { padding-left: 1.6rem; }
   .record-id span, .record-meta dt { display: block; color: #6c6252; font: .56rem var(--type); letter-spacing: .12em; text-transform: uppercase; }
   .record-id strong { display: block; margin-top: .22rem; color: #282219; font: 700 1.12rem/1.2 var(--type); letter-spacing: .035em; }
+  .record-id strong a { text-decoration: none; }
+  .record-id strong a:hover, .record-id strong a:focus-visible { color: var(--blood); }
   .record-summary h2 { margin: 0; font: 650 1.16rem/1.24 var(--sans); }
   .record-summary h2 a { text-decoration: none; }
   .record-summary h2 a:hover, .record-summary h2 a:focus-visible { color: var(--blood); }
