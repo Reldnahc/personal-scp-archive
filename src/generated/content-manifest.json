@@ -2,6 +2,28 @@
   "generated": true,
   "articles": [
     {
+      "id": "SCP-AI-2827",
+      "slug": "as-written",
+      "title": "As Written",
+      "objectClass": "Safe",
+      "description": "A fountain pen makes handwritten instructions unusually easy to understand, even when the instructions themselves are wrong.",
+      "tags": [
+        "document",
+        "cognitive",
+        "workplace",
+        "archival"
+      ],
+      "dateAdded": "2026-08-26",
+      "status": "published",
+      "contentWarnings": [],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": false,
+      "hasScript": false,
+      "contentPath": "generated/scps/as-written/index.html",
+      "assetBase": "generated/scps/as-written/"
+    },
+    {
       "id": "SCP-AI-7131",
       "slug": "ask-the-box",
       "title": "Ask the Box",

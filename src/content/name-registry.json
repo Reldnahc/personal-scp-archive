@@ -1,6 +1,13 @@
 {
   "version": 1,
   "articles": {
+    "as-written": {
+      "reviewed": true,
+      "names": [
+        { "name": "Marian Hale", "surname": "Hale", "role": "Site-19 records clerk" },
+        { "name": "Laura Mendes", "surname": "Mendes", "role": "Foundation technician" }
+      ]
+    },
     "ask-the-box": {
       "reviewed": true,
       "names": []
