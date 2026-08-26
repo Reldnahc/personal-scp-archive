@@ -1,17 +1,21 @@
-import { useEffect } from 'react';
-import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import { NavLink, Route, Routes, useLocation, useNavigationType } from 'react-router-dom';
 import manifest from './generated/content-manifest.json';
 import type { Article } from './types';
 import { ArchivePage } from './pages/ArchivePage';
 import { HomePage } from './pages/HomePage';
-import { AboutPage, LicensingPage } from './pages/StaticPages';
+import { AboutPage, LicensingPage, NotFoundPage } from './pages/StaticPages';
 import { SCPPage } from './pages/SCPPage';
 
 const articles = manifest.articles as Article[];
 const defaultDescription = 'A personal archive of anomalous fiction.';
+const scrollPositions = new Map<string, { left: number; top: number }>();
 
 function RouteEffects() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const previousPathname = useRef<string | undefined>(undefined);
+  const { pathname } = location;
 
   useEffect(() => {
     const article = pathname.startsWith('/scp/')
@@ -35,8 +39,35 @@ function RouteEffects() {
       document.head.append(description);
     }
     description.content = metadata.description;
-    window.scrollTo({ top: 0, left: 0 });
   }, [pathname]);
+
+  useEffect(() => {
+    if (!('scrollRestoration' in window.history)) return;
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+    return () => { window.history.scrollRestoration = previous; };
+  }, []);
+
+  useLayoutEffect(() => () => {
+    scrollPositions.set(location.key, { left: window.scrollX, top: window.scrollY });
+  }, [location.key]);
+
+  useLayoutEffect(() => {
+    const routeChanged = previousPathname.current !== pathname;
+    const savedPosition = pathname === '/archive' && navigationType === 'POP'
+      ? scrollPositions.get(location.key)
+      : undefined;
+    let frame: number | undefined;
+
+    if (savedPosition) {
+      frame = window.requestAnimationFrame(() => window.scrollTo(savedPosition));
+    } else if (routeChanged) {
+      window.scrollTo({ top: 0, left: 0 });
+    }
+
+    previousPathname.current = pathname;
+    return () => { if (frame !== undefined) window.cancelAnimationFrame(frame); };
+  }, [location.key, navigationType, pathname]);
 
   return null;
 }
@@ -66,7 +97,7 @@ function Layout() {
           <Route path="/scp/:id" element={<SCPPage articles={articles} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/licensing" element={<LicensingPage articles={articles} />} />
-          <Route path="*" element={<section className="page narrow-page"><p className="eyebrow">RECORD NOT FOUND</p><h1>404</h1><p>The requested archive record does not exist.</p></section>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <footer className="site-footer">

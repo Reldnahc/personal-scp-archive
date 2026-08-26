@@ -2,6 +2,10 @@ import type { Article } from './types';
 
 export const articleRoute = (article: Article) => `/scp/${article.id.toLowerCase()}`;
 
+export function articlesByNumber(articles: Article[]) {
+  return [...articles].sort((left, right) => left.id.localeCompare(right.id));
+}
+
 export function pickRandomArticle(
   articles: Article[],
   currentId?: string,

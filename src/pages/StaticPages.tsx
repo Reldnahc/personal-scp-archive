@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Article } from '../types';
 
 export function AboutPage() {
@@ -12,6 +13,7 @@ export function AboutPage() {
 }
 
 export function LicensingPage({ articles }: { articles: Article[] }) {
+  const sourcedArticles = articles.filter((article) => (article.sources?.length ?? 0) > 0);
   return <article className="page narrow-page prose-page license-page">
     <p className="eyebrow">LICENSING RECORD</p>
     <h1>Licensing &amp; attribution</h1>
@@ -19,9 +21,22 @@ export function LicensingPage({ articles }: { articles: Article[] }) {
     <p>Based on the <a href="https://scp-wiki.wikidot.com/">SCP Foundation Wiki</a> and the work of its contributors. This archive is unofficial and unaffiliated.</p>
     <p>Covered material may be shared and adapted, including commercially, with attribution and the same license. Changes must be identified.</p>
     <p>Stories use AI-assisted and generated drafting with human direction, selection, revision, and editorial control. Specific borrowed works, when present, are credited below.</p>
-    {articles.length === 0 ? <p className="footnote">The archive presently contains no published SCP records.</p> : <div className="license-sources">{articles.map((article) => <section key={article.id}><h3>{article.id}: {article.title}</h3>{(article.sources?.length ?? 0) > 0 ? <ul>{article.sources!.map((source) => <li key={source.url}>Uses material from <a href={source.url}>{source.title}</a> by {source.author}</li>)}</ul> : <p className="footnote">No specific source works are listed beyond the general SCP setting attribution above.</p>}</section>)}</div>}
+    {articles.length === 0
+      ? <p className="footnote">The archive presently contains no published SCP records.</p>
+      : sourcedArticles.length === 0
+        ? <p className="footnote">No published record currently lists a specific source work beyond the general SCP setting attribution above.</p>
+        : <div className="license-sources">{sourcedArticles.map((article) => <section key={article.id}><h3>{article.id}: {article.title}</h3><ul>{article.sources!.map((source) => <li key={source.url}>Uses material from <a href={source.url}>{source.title}</a> by {source.author}</li>)}</ul></section>)}</div>}
     <h2>Other material</h2>
     <p>Site software is MIT licensed. Third-party assets retain their own terms. Do not use the former SCP-173 image depicting Izumi Kato's <em>Untitled 2004</em>.</p>
     <p className="license-links"><a href="https://scp-wiki.wikidot.com/licensing-guide">SCP licensing guide</a> · <a href="https://scp-wiki.wikidot.com/image-use-policy">Image policy</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">License text</a></p>
   </article>;
+}
+
+export function NotFoundPage({ unknownDesignation = false }: { unknownDesignation?: boolean }) {
+  return <section className="page narrow-page error-page">
+    <p className="eyebrow">RECORD NOT FOUND</p>
+    <h1>{unknownDesignation ? 'Unknown designation' : 'File not located'}</h1>
+    <p>{unknownDesignation ? 'No published record matches this accession number.' : 'No archive record exists at the requested location.'}</p>
+    <Link className="error-return" to="/archive">← Return to archive</Link>
+  </section>;
 }

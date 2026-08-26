@@ -112,7 +112,7 @@ Each `metadata.json` is a small JSON object:
 | `contentWarnings` | string[] | Optional notices shown above standard articles |
 | `sources` | object[] | Optional `{ title, author, url }` credits for identifiable source works |
 | `mode` | string | Optional `standard` (default) or `custom` |
-| `displayOrder` | number | Optional explicit primary sort value; lower values come first |
+| `displayOrder` | number | Optional manifest-generation hint; public archive navigation uses SCP designation order |
 
 All listed fields except `displayOrder`, `sources`, and `mode` are required. `id` may be `null`. Drafts can be unnumbered, but published records cannot; validation tells you to run `npm run assign-ids`. Archived entries remain valid and reserved but are not included in the public manifest.
 
@@ -158,7 +158,7 @@ When reuse is intentional, document the decision instead of weakening the rule g
 
 The manifest and copied public content are build artifacts and carry no numbering authority. The generated manifest is clearly marked with `"generated": true`. It is safe to regenerate. Only source metadata and `id-registry.json` establish identity.
 
-Default archive order is `displayOrder` (when used), then date added descending, then title. Random IDs therefore do not masquerade as publication order. Search runs locally in the browser across number, title, description, and tags; object-class filtering is also local and dependency-free.
+Default archive order and article-to-article navigation both follow SCP designation. The archive can also be ordered by date added. Search, filters, and sorting run locally in the browser and are stored in the hash route's URL parameters, so they survive refreshes, history navigation, and bookmarks.
 
 ## Permanent random numbering
 

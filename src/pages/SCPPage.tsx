@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { cachedArticleHtml, loadArticleHtml, prefetchArticle, publicUrl } from '../articleContent';
-import { articleRoute, pickRandomArticle } from '../archiveNavigation';
+import { articleRoute, articlesByNumber, pickRandomArticle } from '../archiveNavigation';
+import { NotFoundPage } from './StaticPages';
 import type { Article } from '../types';
 
 function useArticleHtml(article?: Article) {
@@ -89,7 +90,7 @@ export function SCPPage({ articles }: { articles: Article[] }) {
     return () => nodes.forEach((node) => node.remove());
   }, [article, content.html]);
 
-  if (!article) return <section className="page narrow-page"><p className="eyebrow">RECORD NOT FOUND</p><h1>Unknown designation</h1><p>No published record matches this accession number.</p><Link to="/archive">Return to archive</Link></section>;
+  if (!article) return <NotFoundPage unknownDesignation />;
   if (content.error) return <section className="page narrow-page"><p className="eyebrow">RETRIEVAL ERROR</p><h1>{article.id}</h1><p>The record body could not be loaded: {content.error}</p></section>;
   if (content.html === undefined) return <div className="loading-record" role="status" aria-busy="true">{showLoading ? 'Retrieving record…' : ''}</div>;
 
@@ -100,9 +101,10 @@ export function SCPPage({ articles }: { articles: Article[] }) {
   }
 
   const base = new URL(publicUrl(article.assetBase), window.location.href).href;
-  const articleIndex = articles.indexOf(article);
-  const previous = articles[(articleIndex - 1 + articles.length) % articles.length];
-  const next = articles[(articleIndex + 1) % articles.length];
+  const orderedArticles = articlesByNumber(articles);
+  const articleIndex = orderedArticles.findIndex((item) => item.id === article.id);
+  const previous = orderedArticles[(articleIndex - 1 + orderedArticles.length) % orderedArticles.length];
+  const next = orderedArticles[(articleIndex + 1) % orderedArticles.length];
   const goToSection = (sectionId: string, control: HTMLButtonElement) => {
     const heading = document.getElementById(sectionId);
     if (!heading) return;
