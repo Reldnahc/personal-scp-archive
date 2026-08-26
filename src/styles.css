@@ -220,13 +220,13 @@
   .archive-actions p { margin: 0; }
   .archive-actions p button { margin-left: .5rem; font-size: .85em; }
   .record-list { margin-top: 1.5rem; border-top: 1px solid var(--rule-dark); }
-  .record-row { position: relative; display: grid; grid-template-columns: 170px 1fr 180px 42px; gap: 1.5rem; align-items: center; border-bottom: 1px solid #a29474; padding: 1.55rem .7rem; background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 40%, transparent); }
+  .record-row { position: relative; display: grid; grid-template-columns: 190px 1fr 180px 42px; gap: 1.5rem; align-items: center; border-bottom: 1px solid #a29474; padding: 1.55rem .7rem; background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 40%, transparent); }
   .record-row::before { content: ''; position: absolute; left: 1.2rem; top: 0; bottom: 0; border-left: 1px solid rgba(116,38,30,.22); }
   .record-row:hover { background: rgba(246,233,200,.34); box-shadow: inset 4px 0 var(--blood); }
   .record-id { padding-left: 1.6rem; }
   .record-id span, .record-meta dt { display: block; color: #6c6252; font: .56rem var(--type); letter-spacing: .12em; text-transform: uppercase; }
-  .record-id strong { color: #282219; font: 700 .85rem var(--type); }
-  .record-summary h2 { margin: 0; font: 700 1.48rem var(--sans); }
+  .record-id strong { display: block; margin-top: .22rem; color: #282219; font: 700 1.12rem/1.2 var(--type); letter-spacing: .035em; }
+  .record-summary h2 { margin: 0; font: 650 1.16rem/1.24 var(--sans); }
   .record-summary h2 a { text-decoration: none; }
   .record-summary h2 a:hover { color: var(--blood); }
   .record-summary p { margin: .35rem 0; color: var(--ink-faded); font-size: .88rem; }
@@ -373,7 +373,7 @@
   .page-heading > p:last-child,
   .prose-page { font-size: var(--text-reading); line-height: var(--leading-body); }
 
-  .record-summary h2 { font-size: 1.5rem; line-height: 1.18; }
+  .record-summary h2 { font-size: 1.16rem; line-height: 1.24; }
   .empty-state h2 { font-size: 2rem; line-height: 1.15; }
   .article-body h2 { font-size: 1.55rem; line-height: 1.22; }
   .article-body h3 { font-size: 1.15rem; line-height: 1.3; }
