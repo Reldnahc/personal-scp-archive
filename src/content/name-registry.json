@@ -16,6 +16,23 @@
       "reviewed": true,
       "names": []
     },
+    "emergency-contact": {
+      "reviewed": true,
+      "names": [
+        { "name": "Rachel Calder", "surname": "Calder", "role": "civilian emergency caller" },
+        { "name": "Jonah Calder", "surname": "Calder", "role": "injured civilian" },
+        { "name": "Irene Bennett", "surname": "Bennett", "role": "emergency communications dispatcher" },
+        { "name": "Agent N. Shah", "surname": "Shah", "role": "Foundation interviewer" },
+        { "name": "Dr. Helena Voss", "surname": "Voss", "role": "Foundation researcher" },
+        { "name": "Lena Cho", "surname": "Cho", "role": "Site-41 research assistant" },
+        { "name": "Elias Monroe", "surname": "Monroe", "role": "Site-41 researcher" },
+        { "name": "Robert Halpern", "surname": "Halpern", "role": "Site-19 technician" },
+        { "name": "Evelyn Sloane", "surname": "Sloane", "role": "Site-19 nurse" },
+        { "name": "Owen Fisk", "surname": "Fisk", "role": "Foundation junior researcher" },
+        { "name": "Graham Walsh", "surname": "Walsh", "role": "Foundation security officer" },
+        { "name": "Lucía Herrera", "surname": "Herrera", "role": "Foundation field agent" }
+      ]
+    },
     "it-fits": {
       "reviewed": true,
       "names": [

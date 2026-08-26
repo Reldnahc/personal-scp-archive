@@ -70,6 +70,33 @@
       "assetBase": "generated/scps/early-detection/"
     },
     {
+      "id": "SCP-AI-2496",
+      "slug": "emergency-contact",
+      "title": "Emergency Contact",
+      "objectClass": "Keter",
+      "description": "An unidentified dispatcher answers emergency communications, knows what responders cannot, and arranges the best outcome still available.",
+      "tags": [
+        "communication",
+        "emergency-services",
+        "predictive",
+        "global"
+      ],
+      "dateAdded": "2026-08-26",
+      "status": "published",
+      "contentWarnings": [
+        "death",
+        "child death",
+        "medical trauma",
+        "violence"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/emergency-contact/index.html",
+      "assetBase": "generated/scps/emergency-contact/"
+    },
+    {
       "id": "SCP-AI-1918",
       "slug": "it-fits",
       "title": "It Fits",

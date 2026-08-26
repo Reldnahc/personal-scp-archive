@@ -1,0 +1,99 @@
+.article-body .classification-history {
+  margin: 0 0 2.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.article-body .case-section + .case-section {
+  margin-top: 3.75rem;
+  padding-top: 1.75rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 { margin-top: 0; }
+
+.article-body .case-subsection {
+  margin-top: 2rem;
+}
+
+.article-body .case-subsection + .case-subsection {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+.article-body .case-subsection > h3 {
+  margin-top: 0;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid #a39577;
+}
+
+.article-body .case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem 1.5rem;
+  margin: 1rem 0 1.35rem;
+}
+
+.article-body .case-meta div {
+  min-width: 10rem;
+  border-left: 2px solid #8f8062;
+  padding-left: .7rem;
+}
+
+.article-body .case-meta dt {
+  color: var(--ink-faded);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.article-body .case-meta dd {
+  margin: .15rem 0 0;
+  font-size: .875rem;
+  font-weight: 650;
+}
+
+.article-body .transcript {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid #82755b;
+  border-left: 4px solid #4c4435;
+  background: rgba(92, 78, 52, .08);
+}
+
+.article-body .transcript::before {
+  content: 'COMMUNICATION RECORD';
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--ink-faded);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.article-body .transcript p { margin: .48rem 0; }
+.article-body .stage-direction { color: var(--ink-faded); font-style: italic; }
+
+.article-body blockquote {
+  margin: 1.55rem 0;
+  padding: 1rem 1.3rem;
+  border-left: 4px solid #665b46;
+  background: rgba(111, 92, 57, .08);
+}
+
+.article-body blockquote p:first-child { margin-top: 0; }
+.article-body blockquote p:last-child { margin-bottom: 0; }
+
+.article-body ul,
+.article-body ol {
+  max-width: 64ch;
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 650px) {
+  .article-body .transcript { padding-inline: 1rem; }
+  .article-body .case-meta { display: grid; }
+  .article-body .case-meta div { min-width: 0; }
+}
