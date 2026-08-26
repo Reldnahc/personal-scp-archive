@@ -1,6 +1,10 @@
 {
   "version": 1,
   "articles": {
+    "ask-the-box": {
+      "reviewed": true,
+      "names": []
+    },
     "it-fits": {
       "reviewed": true,
       "names": [

@@ -1,0 +1,43 @@
+.article-body .case-section + .case-section {
+  margin-top: 3.75rem;
+  padding-top: 1.75rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 {
+  margin-top: 0;
+}
+
+.article-body .record-table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: .94rem;
+}
+
+.article-body .record-table th,
+.article-body .record-table td {
+  border: 1px solid #8e8064;
+  padding: .6rem .7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-body .record-table th {
+  background: rgba(76, 68, 53, .12);
+  font-size: .78rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.article-body .record-table th:not(:first-child),
+.article-body .record-table td:not(:first-child) {
+  width: 6.5rem;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .article-body .record-table { font-size: .84rem; }
+  .article-body .record-table th,
+  .article-body .record-table td { padding: .5rem; }
+}

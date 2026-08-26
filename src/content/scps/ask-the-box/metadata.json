@@ -1,0 +1,18 @@
+{
+  "id": "SCP-AI-7131",
+  "slug": "ask-the-box",
+  "title": "Ask the Box",
+  "objectClass": "Safe",
+  "description": "An infallible diagnostic tool has made the technicians who depend on it progressively less capable of diagnosing anything themselves.",
+  "tags": [
+    "tool",
+    "diagnostic",
+    "mechanical",
+    "institutional-dependence"
+  ],
+  "dateAdded": "2026-08-26",
+  "status": "published",
+  "contentWarnings": [],
+  "sources": [],
+  "mode": "standard"
+}
