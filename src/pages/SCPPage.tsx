@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { cachedArticleHtml, loadArticleHtml, publicUrl } from '../articleContent';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { cachedArticleHtml, loadArticleHtml, prefetchArticle, publicUrl } from '../articleContent';
+import { articleRoute, pickRandomArticle } from '../archiveNavigation';
 import type { Article } from '../types';
 
 function useArticleHtml(article?: Article) {
@@ -32,7 +33,25 @@ function rewriteRelativeUrls(html: string, base: string) {
       if (value && !/^(?:[a-z]+:|#|\/)/i.test(value)) el.setAttribute(attr, new URL(value, base).href);
     }
   });
+  doc.querySelectorAll('table').forEach((table, index) => {
+    if (table.parentElement?.classList.contains('table-scroll')) return;
+    const wrapper = doc.createElement('div');
+    wrapper.className = 'table-scroll';
+    wrapper.setAttribute('role', 'region');
+    wrapper.setAttribute('aria-label', `Scrollable record table ${index + 1}`);
+    wrapper.tabIndex = 0;
+    table.replaceWith(wrapper);
+    wrapper.append(table);
+  });
   return doc.getElementById('article-root')?.innerHTML || html;
+}
+
+function extractSections(html?: string) {
+  if (!html) return [];
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return [...doc.querySelectorAll<HTMLHeadingElement>('h2[id]')]
+    .map((heading) => ({ id: heading.id, label: heading.textContent?.trim() ?? '' }))
+    .filter((section) => section.label);
 }
 
 function buildCustomDocument(html: string, article: Article, base: string) {
@@ -45,8 +64,10 @@ function buildCustomDocument(html: string, article: Article, base: string) {
 
 export function SCPPage({ articles }: { articles: Article[] }) {
   const { id = '' } = useParams();
+  const navigate = useNavigate();
   const article = articles.find((item) => item.id.toLowerCase() === id.toLowerCase());
   const content = useArticleHtml(article);
+  const sections = useMemo(() => extractSections(content.html), [content.html]);
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
@@ -75,14 +96,43 @@ export function SCPPage({ articles }: { articles: Article[] }) {
   if (article.mode === 'custom') {
     const base = new URL(publicUrl(article.assetBase), window.location.href).href;
     const source = buildCustomDocument(content.html, article, base);
-    return <section className="custom-record"><div className="custom-record-bar"><Link to="/archive">← Archive</Link><span>{article.id}</span><span>{article.title}</span><span>AI-generated fiction · <Link to="/licensing">CC BY-SA 3.0</Link></span></div><iframe title={`${article.id}: ${article.title}`} srcDoc={source} sandbox="allow-scripts allow-same-origin" /></section>;
+    return <section className="custom-record"><div className="custom-record-bar"><Link to="/archive">← Archive</Link><span>{article.id}</span><span>{article.title}</span><span>AI-assisted fiction · <Link to="/licensing">CC BY-SA 3.0</Link></span></div><iframe title={`${article.id}: ${article.title}`} srcDoc={source} sandbox="allow-scripts allow-same-origin" /></section>;
   }
 
   const base = new URL(publicUrl(article.assetBase), window.location.href).href;
+  const articleIndex = articles.indexOf(article);
+  const previous = articles[(articleIndex - 1 + articles.length) % articles.length];
+  const next = articles[(articleIndex + 1) % articles.length];
+  const goToSection = (sectionId: string, control: HTMLButtonElement) => {
+    const heading = document.getElementById(sectionId);
+    if (!heading) return;
+    control.closest('details')?.removeAttribute('open');
+    heading.tabIndex = -1;
+    heading.scrollIntoView({ block: 'start' });
+    heading.focus({ preventScroll: true });
+    heading.addEventListener('blur', () => heading.removeAttribute('tabindex'), { once: true });
+  };
+  const goToRandom = () => {
+    const randomArticle = pickRandomArticle(articles, article.id);
+    if (randomArticle) {
+      prefetchArticle(randomArticle);
+      navigate(articleRoute(randomArticle));
+    }
+  };
+
   return <article className="scp-page">
     <header className="scp-header"><p className="eyebrow">SECURE CONTAINMENT FILE</p><div><h1>{article.id}</h1><p>{article.title}</p></div><dl className="document-meta"><div><dt>Object class</dt><dd>{article.objectClass}</dd></div><div><dt>Date added</dt><dd>{article.dateAdded}</dd></div></dl>{article.contentWarnings.length > 0 && <details className="content-advisory"><summary>Reader advisory</summary><p>{article.contentWarnings.join(', ')}.</p></details>}</header>
+    {sections.length > 2 && <details className="file-sections"><summary>File sections <span>{sections.length}</span></summary><ol>{sections.map((section) => <li key={section.id}><button type="button" onClick={(event) => goToSection(section.id, event.currentTarget)}>{section.label}</button></li>)}</ol></details>}
     <div className="article-body" dangerouslySetInnerHTML={{ __html: rewriteRelativeUrls(content.html, base) }} />
     {(article.sources?.length ?? 0) > 0 && <section className="source-credits" aria-labelledby="source-credits-heading"><h2 id="source-credits-heading">Sources and attribution</h2><ul>{article.sources!.map((source) => <li key={source.url}>Uses material from <a href={source.url}>{source.title}</a> by {source.author}</li>)}</ul></section>}
-    <footer className="record-footer"><Link to="/archive">← Return to central index</Link><span>AI-generated fiction · <Link to="/licensing">CC BY-SA 3.0</Link></span></footer>
+    <nav className="record-navigation" aria-label="Record navigation">
+      <Link className="record-return" to="/archive">← Return to archive</Link>
+      <div className="record-sequence">
+        <Link to={articleRoute(previous)} onPointerEnter={() => prefetchArticle(previous)} onFocus={() => prefetchArticle(previous)} aria-label={`Previous record: ${previous.id}, ${previous.title}`}><span>Previous</span><strong>{previous.id}</strong></Link>
+        <button type="button" onClick={goToRandom}><span>Random</span><strong>Random file</strong></button>
+        <Link to={articleRoute(next)} onPointerEnter={() => prefetchArticle(next)} onFocus={() => prefetchArticle(next)} aria-label={`Next record: ${next.id}, ${next.title}`}><span>Next</span><strong>{next.id}</strong></Link>
+      </div>
+    </nav>
+    <footer className="record-footer"><span>AI-assisted fiction</span><Link to="/licensing">CC BY-SA 3.0</Link></footer>
   </article>;
 }

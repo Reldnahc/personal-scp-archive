@@ -1,13 +1,13 @@
 .article-body .case-section + .case-section {
-  margin-top: 4.5rem;
-  padding-top: 2rem;
+  margin-top: 3.75rem;
+  padding-top: 1.75rem;
   border-top: 3px double var(--rule-dark);
 }
 
 .article-body .case-section > h2 { margin-top: 0; }
 
 .article-body .transcript {
-  margin: 2rem 0;
+  margin: 1.6rem 0;
   padding: 1.3rem 1.5rem;
   border: 1px solid #82755b;
   border-left: 4px solid #4c4435;
@@ -24,11 +24,11 @@
   letter-spacing: .11em;
 }
 
-.article-body .transcript p { margin: .6rem 0; }
+.article-body .transcript p { margin: .48rem 0; }
 .article-body .stage-direction { color: var(--ink-faded); font-style: italic; }
 
 .article-body .test-record {
-  margin: 2rem 0;
+  margin: 1.6rem 0;
   padding: 1.2rem 1.35rem;
   border: 1px solid #918267;
   border-left: 4px solid #514838;
@@ -47,7 +47,7 @@
 .article-body .test-record .transcript { margin-bottom: .3rem; }
 
 .article-body blockquote {
-  margin: 1.8rem 0;
+  margin: 1.55rem 0;
   padding: 1rem 1.3rem;
   border-left: 4px solid #665b46;
   background: rgba(111, 92, 57, .08);
