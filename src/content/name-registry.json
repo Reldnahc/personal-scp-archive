@@ -43,6 +43,18 @@
         { "name": "Martin Rook", "surname": "Rook", "role": "containment technician" }
       ]
     },
+    "home-rule": {
+      "reviewed": true,
+      "names": [
+        { "name": "Elaine Foster", "surname": "Foster", "role": "resident hospitalized during the discovery incident" },
+        { "name": "Margaret Sayer", "surname": "Sayer", "role": "former resident displaced by the quarry expansion" },
+        { "name": "Dr. Naomi Ellison", "surname": "Ellison", "role": "Foundation field-team researcher" },
+        { "name": "Specialist Aaron Beck", "surname": "Beck", "role": "Foundation field-team specialist" },
+        { "name": "Researcher David Hsu", "surname": "Hsu", "role": "Foundation field-team researcher" },
+        { "name": "Agent Caroline Stroud", "surname": "Stroud", "role": "Foundation field agent" },
+        { "name": "Regional Director Morrow", "surname": "Morrow", "role": "Foundation regional director" }
+      ]
+    },
     "local-coverage": {
       "reviewed": true,
       "names": [

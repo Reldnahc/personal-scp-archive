@@ -2,6 +2,31 @@
   "generated": true,
   "articles": [
     {
+      "id": "SCP-AI-4238",
+      "slug": "home-rule",
+      "title": "Home Rule",
+      "objectClass": "Euclid",
+      "description": "A Pennsylvania municipality resolves threats to its continued existence by bringing residents and long-term personnel into sincere, incompatible consensus.",
+      "tags": [
+        "location",
+        "cognitive",
+        "collective-behavior",
+        "municipality"
+      ],
+      "dateAdded": "2026-08-27",
+      "status": "published",
+      "contentWarnings": [
+        "environmental contamination",
+        "loss of autonomy"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/home-rule/index.html",
+      "assetBase": "generated/scps/home-rule/"
+    },
+    {
       "id": "SCP-AI-2827",
       "slug": "as-written",
       "title": "As Written",
