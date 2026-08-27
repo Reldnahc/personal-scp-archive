@@ -97,6 +97,31 @@
       "assetBase": "generated/scps/emergency-contact/"
     },
     {
+      "id": "SCP-AI-0744",
+      "slug": "local-coverage",
+      "title": "Local Coverage",
+      "objectClass": "Euclid",
+      "description": "A local news segment accumulates footage with every playback, extending beyond the broadcast and toward a familiar unidentified man.",
+      "tags": [
+        "media",
+        "recording",
+        "historical",
+        "memetic"
+      ],
+      "dateAdded": "2026-08-26",
+      "status": "published",
+      "contentWarnings": [
+        "death",
+        "human remains"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/local-coverage/index.html",
+      "assetBase": "generated/scps/local-coverage/"
+    },
+    {
       "id": "SCP-AI-1918",
       "slug": "it-fits",
       "title": "It Fits",

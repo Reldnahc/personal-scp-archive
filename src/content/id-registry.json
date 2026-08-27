@@ -1,6 +1,7 @@
 {
   "version": 1,
   "assignments": {
+    "SCP-AI-0744": "local-coverage",
     "SCP-AI-1918": "it-fits",
     "SCP-AI-2496": "emergency-contact",
     "SCP-AI-2827": "as-written",

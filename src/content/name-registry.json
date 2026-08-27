@@ -43,6 +43,21 @@
         { "name": "Martin Rook", "surname": "Rook", "role": "containment technician" }
       ]
     },
+    "local-coverage": {
+      "reviewed": true,
+      "names": [
+        { "name": "Redwick, California", "surname": null, "role": "municipality depicted in the recording" },
+        { "name": "KKMN-TV", "surname": null, "role": "local television station" },
+        { "name": "Bellweather Media Archive", "surname": null, "role": "audiovisual preservation company" },
+        { "name": "Daniel Corbett", "surname": "Corbett", "role": "mayor of Redwick" },
+        { "name": "Allison Price", "surname": "Price", "role": "KKMN reporter" },
+        { "name": "K. Weller", "surname": "Weller", "role": "media archive analyst" },
+        { "name": "Samuel Vey", "surname": "Vey", "role": "Redwick resident interviewed in the recording" },
+        { "name": "Martin Dyer", "surname": "Dyer", "role": "missing sheriff's deputy" },
+        { "name": "Research Assistant Molina", "surname": "Molina", "role": "Foundation project researcher" },
+        { "name": "Miriam Cole", "surname": "Cole", "role": "Site-41 archivist" }
+      ]
+    },
     "no-change-in-answers": {
       "reviewed": true,
       "names": [

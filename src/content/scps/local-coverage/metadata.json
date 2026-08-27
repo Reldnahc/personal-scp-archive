@@ -1,0 +1,21 @@
+{
+  "id": "SCP-AI-0744",
+  "slug": "local-coverage",
+  "title": "Local Coverage",
+  "objectClass": "Euclid",
+  "description": "A local news segment accumulates footage with every playback, extending beyond the broadcast and toward a familiar unidentified man.",
+  "tags": [
+    "media",
+    "recording",
+    "historical",
+    "memetic"
+  ],
+  "dateAdded": "2026-08-26",
+  "status": "published",
+  "contentWarnings": [
+    "death",
+    "human remains"
+  ],
+  "sources": [],
+  "mode": "standard"
+}
