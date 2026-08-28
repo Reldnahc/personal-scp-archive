@@ -113,7 +113,7 @@ Each `metadata.json` is a small JSON object:
 | `slug` | string | Lowercase hyphenated value exactly matching the folder name |
 | `title` | string | Human-readable archive title |
 | `objectClass` | string | Displayed classification; deliberately not restricted to a fixed list |
-| `description` | string | Short archive/search summary |
+| `description` | string | One-sentence, spoiler-light archive/search summary |
 | `tags` | string[] | Lightweight search and browsing terms |
 | `dateAdded` | `YYYY-MM-DD` | Used for default newest-first ordering |
 | `status` | string | `draft`, `published`, or `archived` |
@@ -125,6 +125,12 @@ Each `metadata.json` is a small JSON object:
 All listed fields except `displayOrder`, `sources`, and `mode` are required. `id` may be `null`. Drafts can be unnumbered, but published records cannot; validation tells you to run `npm run assign-ids`. Archived entries remain valid and reserved but are not included in the public manifest.
 
 Malformed JSON, bad dates or statuses, a slug/folder mismatch, missing `index.html`, invalid/out-of-range IDs, duplicate IDs, and registry conflicts fail loudly. Broken story folders are never silently skipped.
+
+### Archive summary style
+
+The metadata `description` is a catalogue line, not a plot synopsis or marketing teaser. Use one restrained present-tense sentence, normally 12–30 words and no more than 160 characters. Name the concrete anomalous subject and its initial observable behavior. Stay within information established near the opening Description; do not disclose later addenda, mechanisms, identities, outcomes, or ending turns. Preserve uncertainty, avoid invented implications, and do not repeat the designation, title, class, date, tags, or warnings.
+
+Summary quality still requires editorial review. The content validator can confirm that a description exists, but it cannot reliably determine whether a sentence spoils a reveal or misstates the article.
 
 ## Character and entity name registry
 

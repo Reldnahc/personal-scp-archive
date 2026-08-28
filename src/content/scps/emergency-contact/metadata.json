@@ -3,7 +3,7 @@
   "slug": "emergency-contact",
   "title": "Emergency Contact",
   "objectClass": "Keter",
-  "description": "An unidentified dispatcher answers emergency communications, knows what responders cannot, and arranges the best outcome still available.",
+  "description": "An unidentified dispatcher intermittently replaces the intended recipient of emergency communications and begins handling the caller’s incident.",
   "tags": [
     "communication",
     "emergency-services",

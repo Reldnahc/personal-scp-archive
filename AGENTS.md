@@ -24,13 +24,31 @@ Presentation problems should be solved in shared CSS or article-specific CSS whe
 
 The permitted exception is a name change required by the name-review workflow below. Keep that change narrowly scoped, replace every reference consistently, preserve meaning and formatting, and report it to the user.
 
+## Archive summary standard
+
+The `description` field is the spoiler-light catalogue summary displayed in Archive rows and browser metadata. It is editorial metadata, not a synopsis or promotional teaser.
+
+For every new or revised summary:
+
+1. Use one complete sentence, normally 12–30 words and no more than 160 characters.
+2. Write in restrained present-tense dossier language.
+3. Identify the concrete anomalous subject first, then its initial observable behavior or problem.
+4. Limit the summary to information established near the opening Description. Do not reveal later addenda, escalation, hidden mechanisms, final outcomes, identities, or ending turns.
+5. Preserve uncertainty when the article preserves it. Do not explain what the Foundation has not established.
+6. Do not repeat the title, SCP designation, object class, date, tags, or content warnings merely to fill space.
+7. Avoid rhetorical questions, quotation fragments, hype, evaluative claims, jokes, and phrases such as “a chilling tale” or “nothing is what it seems.” Let the anomaly provide the interest.
+8. Prefer specific nouns and verbs over vague teaser language, but do not add facts absent from the article.
+9. Read the summary beside the other Archive rows and remove repetitive sentence patterns where this can be done without weakening accuracy or tone.
+
+These requirements need editorial review; validation alone cannot reliably detect spoilers or invented implications.
+
 ## Importing a new article
 
 When the user supplies a new story, complete the inclusion rather than stopping at scaffolding.
 
 1. Read the supplied source as UTF-8 and preserve its prose paragraph-for-paragraph.
 2. Create a stable, human-readable folder slug that does not depend on an SCP number.
-3. Create `metadata.json` with `"id": null`, plus the title, object class, concise description, tags, date, status, content warnings, sources, and presentation mode.
+3. Create `metadata.json` with `"id": null`, plus the title, object class, summary-standard description, tags, date, status, content warnings, sources, and presentation mode.
 4. Convert the story body to semantic HTML in `index.html`. The normal article shell already supplies the displayed item number, object class, title, date, and advisory.
 5. Replace temporary designation references consistently:
    - full `SCP-8XXX`-style references become `{{SCP_ID}}`;
@@ -90,6 +108,7 @@ npm run build
 For article imports, additionally confirm:
 
 - source prose and paragraph order were preserved except for explicitly authorized changes;
+- the metadata description follows the archive summary standard and does not disclose later story developments;
 - all name-registry entries are complete and collisions were resolved or approved;
 - the assigned ID appears in the generated manifest and built article;
 - no temporary designation or unresolved metadata token remains;

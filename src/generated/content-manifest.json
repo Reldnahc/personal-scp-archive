@@ -6,7 +6,7 @@
       "slug": "dont-listen",
       "title": "Don’t Listen",
       "objectClass": "Euclid",
-      "description": "A nearly silent predator navigates perfectly in quiet conditions, while sustained noise leaves it unable to locate what it is hunting.",
+      "description": "A nearly silent, eyeless predator uses echolocation with exceptional accuracy until sustained broadband noise disrupts its perception.",
       "tags": [
         "organism",
         "acoustic",
@@ -33,7 +33,7 @@
       "slug": "for-context",
       "title": "For Context",
       "objectClass": "Safe",
-      "description": "An ordinary red stapler causes every attempt to document it to demand more context, producing an archive that can never be complete.",
+      "description": "A conventional red stapler causes anyone documenting it to believe that the record requires progressively more contextual information.",
       "tags": [
         "document",
         "cognitive",
@@ -55,7 +55,7 @@
       "slug": "the-long-way",
       "title": "The Long Way",
       "objectClass": "Safe",
-      "description": "A 22.4-centimeter spatial interval contains a one-dimensional path more than 82,000 kilometers long.",
+      "description": "A 22.4-centimeter spatial interval contains a reproducible one-dimensional path measuring more than 82,000 kilometers from end to end.",
       "tags": [
         "spatial-anomaly",
         "physics",
@@ -77,7 +77,7 @@
       "slug": "home-rule",
       "title": "Home Rule",
       "objectClass": "Euclid",
-      "description": "A Pennsylvania municipality resolves threats to its continued existence by bringing residents and long-term personnel into sincere, incompatible consensus.",
+      "description": "A Pennsylvania municipality gradually reaches consensus when a decision threatens its population, institutions, boundaries, or continued existence.",
       "tags": [
         "location",
         "cognitive",
@@ -102,7 +102,7 @@
       "slug": "as-written",
       "title": "As Written",
       "objectClass": "Safe",
-      "description": "A fountain pen makes handwritten instructions unusually easy to understand, even when the instructions themselves are wrong.",
+      "description": "A black fountain pen improves comprehension and recall of handwritten text without correcting any errors the writing contains.",
       "tags": [
         "document",
         "cognitive",
@@ -124,7 +124,7 @@
       "slug": "ask-the-box",
       "title": "Ask the Box",
       "objectClass": "Safe",
-      "description": "An infallible diagnostic tool has made the technicians who depend on it progressively less capable of diagnosing anything themselves.",
+      "description": "A handheld diagnostic instrument identifies faults and required repairs in mechanical and electrical systems without explaining how it reaches its conclusions.",
       "tags": [
         "tool",
         "diagnostic",
@@ -146,7 +146,7 @@
       "slug": "early-detection",
       "title": "Early Detection",
       "objectClass": "Safe",
-      "description": "An ultrasound system diagnoses conditions before conventional medicine can detect them, but a second examination never gives the same answer.",
+      "description": "An obsolete ultrasound system intermittently identifies medical conditions before conventional examinations can confirm that they exist.",
       "tags": [
         "medical",
         "diagnostic",
@@ -170,7 +170,7 @@
       "slug": "emergency-contact",
       "title": "Emergency Contact",
       "objectClass": "Keter",
-      "description": "An unidentified dispatcher answers emergency communications, knows what responders cannot, and arranges the best outcome still available.",
+      "description": "An unidentified dispatcher intermittently replaces the intended recipient of emergency communications and begins handling the caller’s incident.",
       "tags": [
         "communication",
         "emergency-services",
@@ -197,7 +197,7 @@
       "slug": "local-coverage",
       "title": "Local Coverage",
       "objectClass": "Euclid",
-      "description": "A local news segment accumulates footage with every playback, extending beyond the broadcast and toward a familiar unidentified man.",
+      "description": "A 2003 local news segment changes between viewings as additional footage appears beyond the original broadcast.",
       "tags": [
         "media",
         "recording",
@@ -222,7 +222,7 @@
       "slug": "it-fits",
       "title": "It Fits",
       "objectClass": "Keter",
-      "description": "A large predatory organism can force its unchanged mass through openings no wider than structural defects.",
+      "description": "A large predatory organism compresses its body through millimeter-wide openings without losing mass or anatomical continuity.",
       "tags": [
         "organism",
         "spatial-anomaly",
@@ -248,7 +248,7 @@
       "slug": "no-change-in-answers",
       "title": "No Change in Answers",
       "objectClass": "Safe",
-      "description": "An obsolete execution apparatus recognizes living subjects in places Foundation instruments cannot measure.",
+      "description": "An electromechanical apparatus recovered beneath a former state hospital activates only when an unidentified qualifying subject occupies its chair.",
       "tags": [
         "artificial-intelligence",
         "consciousness",
@@ -274,7 +274,7 @@
       "slug": "the-one-who-stayed-behind",
       "title": "The One Who Stayed Behind",
       "objectClass": "Safe",
-      "description": "An abandoned coal mine calls the people who have already returned from it.",
+      "description": "An abandoned coal mine receives telephone calls from people who have already returned from its underground workings.",
       "tags": [
         "location",
         "mine",
@@ -300,7 +300,7 @@
       "slug": "the-open-door",
       "title": "The Open Door",
       "objectClass": "Euclid",
-      "description": "Direct observation of an unknown presence creates a persistent need to open the door behind it.",
+      "description": "Direct observation of an unidentified presence produces a persistent compulsion to open the door positioned behind it.",
       "tags": [
         "compulsion",
         "location",
