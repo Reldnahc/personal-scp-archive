@@ -2,6 +2,33 @@
   "generated": true,
   "articles": [
     {
+      "id": "SCP-AI-9815",
+      "slug": "dont-listen",
+      "title": "Don’t Listen",
+      "objectClass": "Euclid",
+      "description": "A nearly silent predator navigates perfectly in quiet conditions, while sustained noise leaves it unable to locate what it is hunting.",
+      "tags": [
+        "organism",
+        "acoustic",
+        "predatory",
+        "containment-breach"
+      ],
+      "dateAdded": "2026-08-28",
+      "status": "published",
+      "contentWarnings": [
+        "death",
+        "violence",
+        "injury",
+        "strong language"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/dont-listen/index.html",
+      "assetBase": "generated/scps/dont-listen/"
+    },
+    {
       "id": "SCP-AI-4238",
       "slug": "home-rule",
       "title": "Home Rule",

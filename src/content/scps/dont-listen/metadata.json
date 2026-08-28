@@ -1,0 +1,23 @@
+{
+  "id": "SCP-AI-9815",
+  "slug": "dont-listen",
+  "title": "Don’t Listen",
+  "objectClass": "Euclid",
+  "description": "A nearly silent predator navigates perfectly in quiet conditions, while sustained noise leaves it unable to locate what it is hunting.",
+  "tags": [
+    "organism",
+    "acoustic",
+    "predatory",
+    "containment-breach"
+  ],
+  "dateAdded": "2026-08-28",
+  "status": "published",
+  "contentWarnings": [
+    "death",
+    "violence",
+    "injury",
+    "strong language"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

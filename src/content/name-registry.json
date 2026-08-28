@@ -16,6 +16,18 @@
       "reviewed": true,
       "names": []
     },
+    "dont-listen": {
+      "reviewed": true,
+      "names": [
+        { "name": "Redding, California", "surname": null, "role": "municipality near the recovery site" },
+        { "name": "Clear Creek Road", "surname": null, "role": "road adjoining the recovery site" },
+        { "name": "Kevin Marr", "surname": "Marr", "role": "maintenance-team supervisor" },
+        { "name": "Marcus Sutter", "surname": "Sutter", "role": "sole surviving maintenance-team member" },
+        { "name": "Agent L. Ortega", "surname": "Ortega", "role": "Foundation interviewer" },
+        { "name": "Dr. Hannah Pierce", "surname": "Pierce", "role": "Foundation researcher" },
+        { "name": "Technician Evan Reeve", "surname": "Reeve", "role": "Site-64 containment technician" }
+      ]
+    },
     "emergency-contact": {
       "reviewed": true,
       "names": [

@@ -1,0 +1,71 @@
+.article-body .case-section + .case-section {
+  margin-top: 3.75rem;
+  padding-top: 1.75rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 { margin-top: 0; }
+
+.article-body .case-subsection { margin-top: 2rem; }
+
+.article-body .interview-record > h3,
+.article-body .test-record > h3 {
+  margin-top: 0;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid #a39577;
+}
+
+.article-body .case-meta {
+  margin-block: .35rem;
+  border-left: 2px solid #8f8062;
+  padding-left: .7rem;
+  font-size: .875rem;
+}
+
+.article-body .transcript {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid #82755b;
+  border-left: 4px solid #4c4435;
+  background: rgba(92, 78, 52, .08);
+}
+
+.article-body .transcript::before {
+  content: 'TRANSCRIPT';
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--ink-faded);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.article-body .transcript p { margin: .48rem 0; }
+.article-body .stage-direction { color: var(--ink-faded); font-style: italic; }
+
+.article-body .test-record {
+  margin: 1.6rem 0;
+  padding: 1.2rem 1.35rem;
+  border: 1px solid #918267;
+  border-left: 4px solid #514838;
+  background: rgba(93, 80, 55, .07);
+}
+
+.article-body blockquote {
+  margin: 1.55rem 0;
+  padding: 1rem 1.3rem;
+  border-left: 4px solid #665b46;
+  background: rgba(111, 92, 57, .08);
+}
+
+.article-body blockquote p { margin: .65rem 0; }
+.article-body blockquote p:first-child { margin-top: 0; }
+.article-body blockquote p:last-child { margin-bottom: 0; }
+
+.article-body .warning p { margin: .45rem 0; font-weight: 700; }
+
+@media (max-width: 650px) {
+  .article-body .transcript,
+  .article-body .test-record,
+  .article-body blockquote { padding-inline: 1rem; }
+}
