@@ -5,6 +5,9 @@ export function HomePage({ articleCount }: { articleCount: number }) {
     <section className="home-page">
       <div className="archive-cover">
         <div className="cover-tab" aria-hidden="true">VOL. AI</div>
+        <div className="cover-status" aria-label="Restricted circulation">
+          <span>Restricted</span>
+        </div>
         <p className="cover-code">REGISTRY 7 / RESTRICTED</p>
         <div className="cover-seal" aria-hidden="true"><span>SCP</span><b>AI</b></div>
         <header className="cover-title">
@@ -17,10 +20,6 @@ export function HomePage({ articleCount }: { articleCount: number }) {
         </div>
         <div className="cover-controls">
           <Link className="cover-entry" to="/archive">Open index <span aria-hidden="true">→</span></Link>
-          <div className="cover-status">
-            <span>Restricted</span>
-            <p>{articleCount === 0 ? 'NO FILES CATALOGUED' : 'INDEX CURRENT'}</p>
-          </div>
         </div>
         <p className="cover-warning">DO NOT REMOVE FROM RECORDS ROOM</p>
       </div>
