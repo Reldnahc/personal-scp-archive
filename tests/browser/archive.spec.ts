@@ -34,7 +34,7 @@ test('search, class, and tag filters update results and the hash query', async (
   await expect(page).toHaveURL(/q=The\+Long\+Way/);
 
   await page.getByRole('button', { name: 'Clear all filters' }).click();
-  await rows.first().getByRole('button', { name: 'Safe', exact: true }).click();
+  await page.locator('.record-class-filter').filter({ hasText: /^Safe$/ }).first().click();
   await expect(page).toHaveURL(/class=Safe/);
   await expect(rows.locator('.record-class-filter:not([aria-pressed="true"])')).toHaveCount(0);
 
