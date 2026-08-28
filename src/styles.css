@@ -406,17 +406,7 @@
 }
 
 @media (max-width: 820px) {
-  .site-frame {
-    width: 100%;
-    box-shadow: none;
-  }
-  .site-frame > main::after {
-    border-inline: 0;
-    filter: none;
-    box-shadow:
-      inset 5px 0 9px rgba(53, 42, 25, .08),
-      inset -5px 0 9px rgba(53, 42, 25, .08);
-  }
+  .site-frame { width: 100%; }
   .header-inner { min-height: auto; padding-block: .9rem; align-items: center; gap: .8rem; }
   .wordmark { gap: .7rem; }
   .wordmark-mark { width: 42px; }
@@ -429,11 +419,7 @@
   .site-header nav a::after { bottom: .2rem; }
   .home-page { min-height: 650px; padding-block: 4rem; }
   .home-page::before { display: none; }
-  .archive-cover {
-    min-height: 520px;
-    padding: 2.5rem 2rem;
-    box-shadow: 0 14px 30px rgba(22,16,9,.38), inset 0 0 80px #11100c, inset 8px 0 16px rgba(0,0,0,.55);
-  }
+  .archive-cover { min-height: 520px; padding: 2.5rem 2rem; }
   .cover-seal { width: 92px; margin-block: 2.5rem 2rem; }
   .cover-seal::before { width: 112px; }
   .cover-seal::after { height: 112px; }
@@ -452,12 +438,7 @@
   .record-open { grid-column: 2; grid-row: 1; }
   .site-footer > div { display: grid; }
   .document-meta { flex-wrap: wrap; }
-  .scp-page {
-    width: calc(100% - 1rem);
-    margin-block: .5rem 3rem;
-    padding-inline: 1.5rem;
-    box-shadow: 0 7px 16px rgba(42,32,18,.18), inset 0 0 60px rgba(107,78,31,.08);
-  }
+  .scp-page { width: calc(100% - 1rem); margin-block: .5rem; padding-inline: 1.5rem; }
   .scp-page::before { display: none; }
   .scp-header::after { position: static; display: inline-block; margin-top: .8rem; }
   .custom-record { height: calc(100vh - 82px); }
