@@ -106,6 +106,23 @@
         { "name": "Nolan Pike", "surname": "Pike", "role": "Foundation researcher" }
       ]
     },
+    "the-long-way": {
+      "reviewed": true,
+      "names": [
+        { "name": "Dr. Elena Varga", "surname": "Varga", "role": "Foundation project researcher" },
+        { "name": "FSV-12", "surname": null, "role": "Foundation satellite" },
+        { "name": "Foundation Department of Applied Physics", "surname": null, "role": "Foundation scientific department" }
+      ]
+    },
+    "for-context": {
+      "reviewed": true,
+      "names": [
+        { "name": "Dr. Talbot", "surname": "Talbot", "role": "records-reduction meeting participant" },
+        { "name": "Archivist Chen", "surname": "Chen", "role": "Foundation archivist" },
+        { "name": "President Eisenhower", "surname": "Eisenhower", "role": "historical person referenced in withdrawn documentation" },
+        { "name": "Records and Information Security Administration", "surname": null, "role": "Foundation records authority" }
+      ]
+    },
     "the-open-door": {
       "reviewed": true,
       "names": [

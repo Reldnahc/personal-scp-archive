@@ -1,0 +1,18 @@
+{
+  "id": "SCP-AI-6169",
+  "slug": "the-long-way",
+  "title": "The Long Way",
+  "objectClass": "Safe",
+  "description": "A 22.4-centimeter spatial interval contains a one-dimensional path more than 82,000 kilometers long.",
+  "tags": [
+    "spatial-anomaly",
+    "physics",
+    "one-dimensional",
+    "exploration"
+  ],
+  "dateAdded": "2026-08-28",
+  "status": "published",
+  "contentWarnings": [],
+  "sources": [],
+  "mode": "standard"
+}

@@ -1,0 +1,74 @@
+.article-body .case-section + .case-section {
+  margin-top: 3.5rem;
+  padding-top: 1.65rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 {
+  margin-top: 0;
+}
+
+.article-body .records-notice {
+  margin-bottom: 2.75rem;
+  padding: 1.1rem 1.3rem;
+  border: 2px solid var(--rule-dark);
+  background: rgba(111, 92, 57, .08);
+}
+
+.article-body .records-notice > h2 {
+  padding-bottom: .65rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  letter-spacing: .075em;
+}
+
+.article-body .records-notice p {
+  margin-block: .6rem;
+}
+
+.article-body .archival-inventory {
+  margin-block: 1.35rem;
+  padding-left: 1.45rem;
+}
+
+.article-body .archival-inventory li + li {
+  margin-top: .45rem;
+}
+
+.article-body .transcript {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid #82755b;
+  border-left: 4px solid #4c4435;
+  background: rgba(92, 78, 52, .08);
+}
+
+.article-body .transcript::before {
+  content: 'TRANSCRIPT';
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--ink-faded);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+}
+
+.article-body .transcript p {
+  margin: .48rem 0;
+}
+
+.article-body .stage-direction {
+  color: var(--ink-faded);
+  font-style: italic;
+}
+
+@media (max-width: 650px) {
+  .article-body .case-section + .case-section {
+    margin-top: 2.75rem;
+    padding-top: 1.35rem;
+  }
+
+  .article-body .records-notice,
+  .article-body .transcript {
+    padding-inline: 1rem;
+  }
+}

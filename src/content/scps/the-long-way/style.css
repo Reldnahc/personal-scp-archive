@@ -1,0 +1,16 @@
+.article-body .case-section + .case-section {
+  margin-top: 3.5rem;
+  padding-top: 1.65rem;
+  border-top: 3px double var(--rule-dark);
+}
+
+.article-body .case-section > h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 650px) {
+  .article-body .case-section + .case-section {
+    margin-top: 2.75rem;
+    padding-top: 1.35rem;
+  }
+}

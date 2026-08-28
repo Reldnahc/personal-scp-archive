@@ -29,6 +29,50 @@
       "assetBase": "generated/scps/dont-listen/"
     },
     {
+      "id": "SCP-AI-5649",
+      "slug": "for-context",
+      "title": "For Context",
+      "objectClass": "Safe",
+      "description": "An ordinary red stapler causes every attempt to document it to demand more context, producing an archive that can never be complete.",
+      "tags": [
+        "document",
+        "cognitive",
+        "bureaucratic",
+        "self-referential"
+      ],
+      "dateAdded": "2026-08-28",
+      "status": "published",
+      "contentWarnings": [],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/for-context/index.html",
+      "assetBase": "generated/scps/for-context/"
+    },
+    {
+      "id": "SCP-AI-6169",
+      "slug": "the-long-way",
+      "title": "The Long Way",
+      "objectClass": "Safe",
+      "description": "A 22.4-centimeter spatial interval contains a one-dimensional path more than 82,000 kilometers long.",
+      "tags": [
+        "spatial-anomaly",
+        "physics",
+        "one-dimensional",
+        "exploration"
+      ],
+      "dateAdded": "2026-08-28",
+      "status": "published",
+      "contentWarnings": [],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": true,
+      "hasScript": false,
+      "contentPath": "generated/scps/the-long-way/index.html",
+      "assetBase": "generated/scps/the-long-way/"
+    },
+    {
       "id": "SCP-AI-4238",
       "slug": "home-rule",
       "title": "Home Rule",
