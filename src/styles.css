@@ -203,7 +203,7 @@
   .cover-entry span { color: #a79872; font-size: 1.15rem; }
   .cover-entry:hover { border-color: #a54b3e; color: #f0e4c3; background: rgba(82,30,24,.28); }
   .cover-entry:hover span { color: #c36757; }
-  .cover-status { position: absolute; top: 2.65rem; right: 2.7rem; z-index: 1; transform: rotate(9deg); }
+  .cover-status { position: absolute; top: -.9rem; right: 1.6rem; z-index: 2; transform: rotate(10deg); }
   .cover-status span { display: block; border: 4px double rgba(154,57,45,.82); padding: .3rem .7rem; color: rgba(177,70,56,.9); font: 700 1rem/1.15 var(--type); letter-spacing: .12em; text-transform: uppercase; }
   .cover-warning { position: absolute; left: 50%; bottom: -2.8rem; width: max-content; margin: 0; color: #5b503d; font: .52rem var(--type); letter-spacing: .16em; transform: translateX(-50%); }
 
@@ -452,7 +452,7 @@
   .page { width: min(100% - 1.5rem, 1120px); }
   .archive-cover { min-height: 500px; outline: 0; padding-inline: 1.55rem; }
   .archive-cover::before { display: none; }
-  .cover-status { top: 2rem; right: 1.35rem; transform: rotate(9deg); }
+  .cover-status { top: -.65rem; right: .75rem; transform: rotate(9deg); }
   .cover-status span { padding: .25rem .55rem; font-size: .8125rem; }
   .cover-controls { grid-template-columns: minmax(13rem, 15rem); margin-top: 2.25rem; }
   .record-row { padding-inline: .35rem; }
