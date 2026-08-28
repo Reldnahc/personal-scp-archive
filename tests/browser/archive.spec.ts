@@ -174,4 +174,11 @@ test('each archive row has one stretched article link while its filters remain i
   const tag = (await filter.innerText()).trim();
   await filter.click();
   await expect(page).toHaveURL(new RegExp(`#\/archive\?.*tag=${encodeURIComponent(tag)}`, 'i'));
+  await expect(filter).toBeFocused();
+
+  await page.mouse.move(0, 0);
+  await expect.poll(() => row.evaluate((element) => getComputedStyle(element).backgroundColor))
+    .toBe('rgba(0, 0, 0, 0)');
+  await expect.poll(() => row.evaluate((element) => getComputedStyle(element).boxShadow))
+    .toBe('none');
 });

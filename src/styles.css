@@ -241,7 +241,7 @@
   .record-list { margin-top: 1.5rem; border-top: 1px solid var(--rule-dark); }
   .record-row { position: relative; display: grid; grid-template-columns: 190px 1fr 180px 42px; gap: 1.5rem; align-items: center; border-bottom: 1px solid #a29474; padding: 1.55rem .7rem; background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 40%, transparent); }
   .record-row::before { content: ''; position: absolute; left: 1.2rem; top: 0; bottom: 0; border-left: 1px solid rgba(116,38,30,.22); }
-  .record-row:hover, .record-row:focus-within { background: rgba(246,233,200,.34); box-shadow: inset 4px 0 var(--blood); }
+  .record-row:hover, .record-row:has(.record-summary h2 a:focus-visible) { background: rgba(246,233,200,.34); box-shadow: inset 4px 0 var(--blood); }
   .record-id { padding-left: 1.6rem; }
   .record-id span, .record-meta dt { display: block; color: #6c6252; font: .56rem var(--type); letter-spacing: .12em; text-transform: uppercase; }
   .record-id strong { display: block; margin-top: .22rem; color: #282219; font: 700 1.12rem/1.2 var(--type); letter-spacing: .035em; }
@@ -252,9 +252,9 @@
   .record-row:hover .record-id strong,
   .record-row:hover .record-summary h2 a,
   .record-row:hover .record-open,
-  .record-row:focus-within .record-id strong,
-  .record-row:focus-within .record-summary h2 a,
-  .record-row:focus-within .record-open { color: var(--blood); }
+  .record-row:has(.record-summary h2 a:focus-visible) .record-id strong,
+  .record-row:has(.record-summary h2 a:focus-visible) .record-summary h2 a,
+  .record-row:has(.record-summary h2 a:focus-visible) .record-open { color: var(--blood); }
   .record-summary p { margin: .35rem 0; color: var(--ink-faded); font-size: .88rem; }
   .record-summary ul { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: .65rem 0 0; padding: 0; }
   .record-summary li { display: flex; }
