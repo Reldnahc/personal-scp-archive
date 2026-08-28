@@ -72,9 +72,13 @@ export function ArchivePage({ articles }: { articles: Article[] }) {
         </form>
         <div className="archive-actions" role="group" aria-label="Archive actions">
           <button type="button" className="random-file" onClick={openRandom} aria-label="Open a random published record">Random file</button>
-          {objectClass && <p>Class: <strong>{objectClass}</strong> <button type="button" onClick={() => setArchiveParam('class', '')} aria-label={`Clear ${objectClass} class filter`}>Clear class</button></p>}
-          {tag && <p>Tag: <strong>{tag}</strong> <button type="button" onClick={() => setArchiveParam('tag', '')} aria-label={`Clear ${tag} tag filter`}>Clear tag</button></p>}
-          {showClearAll && <button type="button" className="clear-filters" onClick={() => clearFilters(true)}>Clear all filters</button>}
+          <div className="archive-filter-status">
+            <span className="archive-filter-label">Active filters</span>
+            {!showClearAll && <span className="archive-filter-empty">None</span>}
+            {objectClass && <p>Class: <strong>{objectClass}</strong> <button type="button" onClick={() => setArchiveParam('class', '')} aria-label={`Clear ${objectClass} class filter`}>Clear class</button></p>}
+            {tag && <p>Tag: <strong>{tag}</strong> <button type="button" onClick={() => setArchiveParam('tag', '')} aria-label={`Clear ${tag} tag filter`}>Clear tag</button></p>}
+            {showClearAll && <button type="button" className="clear-filters" onClick={() => clearFilters(true)}>Clear all filters</button>}
+          </div>
         </div>
       </>}
       {articles.length === 0 ? <EmptyArchive /> : visible.length === 0 ? <div className="empty-state" id="archive-results"><p className="empty-code">NO MATCH</p><h2>No records meet those criteria.</h2><button className="text-button" onClick={() => clearFilters(true)}>Clear filters</button></div> : (
