@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { type MouseEvent, useEffect, useLayoutEffect, useRef } from 'react';
 import { NavLink, Route, Routes, useLocation, useNavigationType } from 'react-router-dom';
 import manifest from './generated/content-manifest.json';
 import type { Article } from './types';
@@ -58,26 +58,63 @@ function RouteEffects() {
       ? scrollPositions.get(location.key)
       : undefined;
     let frame: number | undefined;
+    let focusObserver: MutationObserver | undefined;
+
+    const focusRouteTarget = () => {
+      const main = document.getElementById('main-content');
+      if (!main) return;
+      const heading = main.querySelector<HTMLElement>('h1');
+      const target = heading ?? main;
+      target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+
+      if (!heading) {
+        focusObserver = new MutationObserver(() => {
+          const loadedHeading = main.querySelector<HTMLElement>('h1');
+          if (!loadedHeading) return;
+          if (document.activeElement === main) {
+            loadedHeading.tabIndex = -1;
+            loadedHeading.focus({ preventScroll: true });
+          }
+          focusObserver?.disconnect();
+        });
+        focusObserver.observe(main, { childList: true, subtree: true });
+      }
+    };
 
     if (savedPosition) {
       frame = window.requestAnimationFrame(() => window.scrollTo(savedPosition));
     } else if (routeChanged) {
       window.scrollTo({ top: 0, left: 0 });
+      if (navigationType !== 'POP') {
+        frame = window.requestAnimationFrame(focusRouteTarget);
+      }
     }
 
     previousPathname.current = pathname;
-    return () => { if (frame !== undefined) window.cancelAnimationFrame(frame); };
+    return () => {
+      if (frame !== undefined) window.cancelAnimationFrame(frame);
+      focusObserver?.disconnect();
+    };
   }, [location.key, navigationType, pathname]);
 
   return null;
 }
 
 function Layout() {
+  const skipToContent = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const main = document.getElementById('main-content');
+    if (!main) return;
+    main.focus({ preventScroll: true });
+    main.scrollIntoView({ block: 'start' });
+  };
+
   return (
     <div className="site-frame">
       <RouteEffects />
       <header className="site-header">
-        <a className="skip-link" href="#main-content">Skip to content</a>
+        <a className="skip-link" href="#main-content" onClick={skipToContent}>Skip to content</a>
         <div className="header-inner">
           <NavLink to="/" className="wordmark" aria-label="SCP-AI archive home">
             <span className="wordmark-mark" aria-hidden="true">AI</span>
@@ -90,7 +127,7 @@ function Layout() {
           </nav>
         </div>
       </header>
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<HomePage articleCount={articles.length} />} />
           <Route path="/archive" element={<ArchivePage articles={articles} />} />

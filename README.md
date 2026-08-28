@@ -23,6 +23,7 @@ The public URL for an assigned record is `#/scp/scp-ai-####`. Its source folder 
 ├─ scripts/
 │  ├─ content.mjs                      Discover, validate, assign, generate
 │  └─ test-content-pipeline.mjs        Isolated temporary-fixture checks
+├─ tests/browser/                      Focused Playwright UI regressions
 ├─ src/
 │  ├─ content/
 │  │  ├─ id-registry.json              Permanent, tracked ID history
@@ -55,6 +56,13 @@ npm run assign-ids     # permanently assign all currently unnumbered stories
 npm run build          # validate, generate manifest/content, build dist/
 npm run preview        # serve the production build locally
 npm run test:content   # run isolated content-pipeline fixture checks
+npm run test:browser   # run Chromium UI regressions after npm run build
+```
+
+The first browser-test run on a new machine also needs the free Chromium test binary:
+
+```bash
+npx playwright install chromium
 ```
 
 Both `dev` and `build` regenerate the manifest automatically. A normal build **never assigns IDs or modifies metadata/the registry**. `assign-ids` is the only normal command that makes permanent numbering changes.
@@ -232,7 +240,7 @@ Use semantic HTML inside these containers. Avoid relying on color alone for mean
 
 ## GitHub Pages deployment
 
-`.github/workflows/deploy-pages.yml` runs on every push to `main` and on manual dispatch. It installs locked dependencies, validates, builds, uploads `dist/`, and deploys it using only official GitHub Pages Actions. The workflow computes Vite's base as `/` for a `username.github.io` repository or `/repository-name/` for a project site. Asset paths and fetched story paths use that base.
+`.github/workflows/deploy-pages.yml` runs on every push to `main` and on manual dispatch. It installs locked dependencies, runs the isolated content-pipeline checks, validates and builds, runs the focused Chromium browser regressions, uploads `dist/`, and deploys it using only official GitHub Pages Actions. Any failed test prevents deployment. The workflow computes Vite's base as `/` for a `username.github.io` repository or `/repository-name/` for a project site. Asset paths and fetched story paths use that base.
 
 HashRouter makes routes look like `https://username.github.io/repository/#/scp/scp-ai-4187`. Everything before `#` resolves to the real static `index.html`, so direct visits and refreshes work without server rewrite rules.
 
@@ -276,3 +284,5 @@ The Sigma-10 type stack—Inter, Sans Normalcy, and RedactRect—is bundled loca
 ## Quality checks
 
 `npm run test:content` creates temporary fixtures outside production content and verifies empty archives, unnumbered drafts, published-ID enforcement, random assignment, uniqueness, immutability, historical reservation after deletion, custom CSS discovery, and malformed JSON errors. The temporary fixture tree is deleted afterward and never ships as a real record.
+
+`npm run test:browser` serves the production build and runs a deliberately small Chromium suite covering hash routing, skip navigation, route focus, Archive query/history behavior, filtering, record navigation, article loading, and responsive overflow. It uses behavior assertions rather than pixel-perfect screenshots so the archival styling can evolve without brittle failures.

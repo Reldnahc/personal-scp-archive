@@ -2,4 +2,6 @@ node_modules/
 dist/
 .vite/
 public/generated/
+test-results/
+playwright-report/
 *.log

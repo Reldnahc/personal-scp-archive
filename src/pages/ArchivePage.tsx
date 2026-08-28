@@ -52,7 +52,7 @@ export function ArchivePage({ articles }: { articles: Article[] }) {
   };
 
   const openRandom = () => {
-    const article = pickRandomArticle(articles);
+    const article = pickRandomArticle(visible);
     if (!article) return;
     prefetchArticle(article);
     navigate(articleRoute(article));
@@ -71,22 +71,21 @@ export function ArchivePage({ articles }: { articles: Article[] }) {
           <p aria-live="polite" aria-atomic="true">{visible.length} {visible.length === 1 ? 'record' : 'records'}</p>
         </form>
         <div className="archive-actions" role="group" aria-label="Archive actions">
-          <button type="button" className="random-file" onClick={openRandom} aria-label="Open a random published record">Random file</button>
-          <div className="archive-filter-status">
+          <button type="button" className="random-file" onClick={openRandom} disabled={visible.length === 0} aria-label={visible.length === 0 ? 'No matching records available' : 'Open a random record from the current results'}>Random file</button>
+          {showClearAll && <div className="archive-filter-status">
             <span className="archive-filter-label">Active filters</span>
-            {!showClearAll && <span className="archive-filter-empty">None</span>}
             {objectClass && <p>Class: <strong>{objectClass}</strong> <button type="button" onClick={() => setArchiveParam('class', '')} aria-label={`Clear ${objectClass} class filter`}>Clear class</button></p>}
             {tag && <p>Tag: <strong>{tag}</strong> <button type="button" onClick={() => setArchiveParam('tag', '')} aria-label={`Clear ${tag} tag filter`}>Clear tag</button></p>}
-            {showClearAll && <button type="button" className="clear-filters" onClick={() => clearFilters(true)}>Clear all filters</button>}
-          </div>
+            <button type="button" className="clear-filters" onClick={() => clearFilters(true)}>Clear all filters</button>
+          </div>}
         </div>
       </>}
       {articles.length === 0 ? <EmptyArchive /> : visible.length === 0 ? <div className="empty-state" id="archive-results"><p className="empty-code">NO MATCH</p><h2>No records meet those criteria.</h2><button className="text-button" onClick={() => clearFilters(true)}>Clear filters</button></div> : (
         <div className="record-list" id="archive-results">{visible.map((article) => <article className="record-row" key={article.id} onPointerEnter={() => prefetchArticle(article)} onFocus={() => prefetchArticle(article)} onTouchStart={() => prefetchArticle(article)}>
-          <div className="record-id"><span>FILE</span><strong><Link to={articleRoute(article)}>{article.id}</Link></strong></div>
+          <div className="record-id"><span>FILE</span><strong>{article.id}</strong></div>
           <div className="record-summary"><h2><Link to={articleRoute(article)}>{article.title}</Link></h2><p>{article.description}</p><ul aria-label={`Tags for ${article.id}`}>{article.tags.map((articleTag) => <li key={articleTag}><button type="button" aria-pressed={tag === articleTag} aria-controls="archive-results" onClick={() => setArchiveParam('tag', tag === articleTag ? '' : articleTag)}>{articleTag}</button></li>)}</ul></div>
           <dl className="record-meta"><div><dt>Class</dt><dd><button type="button" className="record-class-filter" aria-pressed={objectClass === article.objectClass} aria-controls="archive-results" onClick={() => setArchiveParam('class', objectClass === article.objectClass ? '' : article.objectClass)}>{article.objectClass}</button></dd></div><div><dt>Added</dt><dd><time dateTime={article.dateAdded}>{article.dateAdded}</time></dd></div></dl>
-          <Link className="record-open" to={articleRoute(article)} aria-label={`Open ${article.id}: ${article.title}`}>→</Link>
+          <span className="record-open" aria-hidden="true">→</span>
         </article>)}</div>
       )}
     </section>
