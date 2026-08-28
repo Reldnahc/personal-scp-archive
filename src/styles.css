@@ -474,8 +474,15 @@
     box-shadow: none;
   }
   .scp-page::before { display: none; }
-  .scp-header { padding-top: 4.5rem; }
-  .scp-header::after { top: 1.15rem; right: .1rem; }
+  .scp-header::after {
+    position: absolute;
+    top: 1rem;
+    right: .1rem;
+    margin: 0;
+    border-width: 2px;
+    padding: .12rem .5rem;
+    font-size: .7rem;
+  }
   .custom-record { height: calc(100vh - 82px); }
   .custom-record-bar span:nth-child(3), .custom-record-bar span:nth-child(4) { display: none; }
   .file-sections { margin-top: -1.35rem; }
