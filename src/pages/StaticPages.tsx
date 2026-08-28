@@ -14,7 +14,6 @@ export function AboutPage() {
     <p>Where this archive differs from external SCP material, internal continuity takes precedence.</p>
     <p>Case numbers are assigned permanently and at random from the archive's registry. They identify records; they do not describe the order in which the stories were written or published.</p>
     <p>The stories are developed through AI-assisted and generated drafting under human direction, selection, revision, and editorial control. The <strong>SCP–AI</strong> designation names this archive and does not imply that every record concerns artificial intelligence.</p>
-    <p>The site is entirely static. It has no accounts, comments, analytics, advertising, or tracking.</p>
   </article>;
 }
 
@@ -33,8 +32,8 @@ export function LicensingPage({ articles }: { articles: Article[] }) {
         ? <p className="footnote">No published record currently lists a specific source work beyond the general SCP setting attribution above.</p>
         : <div className="license-sources">{sourcedArticles.map((article) => <section key={article.id}><h3>{article.id}: {article.title}</h3><ul>{article.sources!.map((source) => <li key={source.url}>Uses material from <a href={source.url}>{source.title}</a> by {source.author}</li>)}</ul></section>)}</div>}
     <h2>Other material</h2>
-    <p>Site software is MIT licensed. Third-party assets retain their own terms. Do not use the former SCP-173 image depicting Izumi Kato's <em>Untitled 2004</em>.</p>
-    <p className="license-links"><a href="https://scp-wiki.wikidot.com/licensing-guide">SCP licensing guide</a> · <a href="https://scp-wiki.wikidot.com/image-use-policy">Image policy</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">License text</a></p>
+    <p>Site software is MIT licensed. Third-party assets retain their own terms.</p>
+    <p className="license-links"><a href="https://scp-wiki.wikidot.com/licensing-guide">SCP licensing guide</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">License text</a></p>
   </article>;
 }
 
