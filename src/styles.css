@@ -284,7 +284,7 @@
   .scp-page { position: relative; width: min(900px, calc(100% - 2.5rem)); margin: 3rem auto 5rem; padding: 3.5rem clamp(1.5rem, 6vw, 4.5rem) 5rem; background: rgba(232,222,197,.72); border: 1px solid #97896b; box-shadow: 10px 14px 24px rgba(42,32,18,.22), inset 0 0 60px rgba(107,78,31,.08); }
   .scp-page::before { content: ''; position: absolute; top: 0; bottom: 0; left: 2.2rem; border-left: 1px solid rgba(121,38,29,.24); }
   .scp-header { position: relative; border-top: 6px double #272219; border-bottom: 1px solid var(--rule-dark); padding: 1.5rem 0; margin-bottom: 3rem; }
-  .scp-header::after { content: 'CONTROLLED COPY'; position: absolute; right: 0; top: 1rem; color: rgba(105,28,20,.36); border: 2px solid rgba(105,28,20,.33); padding: .1rem .45rem; font: 700 .64rem var(--type); letter-spacing: .08em; transform: rotate(4deg); }
+  .scp-header::after { content: 'CONTROLLED COPY'; position: absolute; right: .15rem; top: 1.05rem; color: rgba(105,28,20,.4); border: 3px solid rgba(105,28,20,.36); padding: .18rem .65rem; font: 700 .8rem/1.15 var(--type); letter-spacing: .09em; transform: rotate(5deg); }
   .scp-header > div { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
   .scp-header h1 { margin: 0; font: 700 clamp(2.3rem, 6vw, 3.8rem) var(--type); letter-spacing: -.07em; }
   .scp-header > div > p { margin: .2rem 0 0; color: var(--ink-faded); font: italic 1.2rem/1.35 var(--sans); }
@@ -474,7 +474,8 @@
     box-shadow: none;
   }
   .scp-page::before { display: none; }
-  .scp-header::after { position: static; display: inline-block; margin-top: .8rem; }
+  .scp-header { padding-top: 4.5rem; }
+  .scp-header::after { top: 1.15rem; right: .1rem; }
   .custom-record { height: calc(100vh - 82px); }
   .custom-record-bar span:nth-child(3), .custom-record-bar span:nth-child(4) { display: none; }
   .file-sections { margin-top: -1.35rem; }
