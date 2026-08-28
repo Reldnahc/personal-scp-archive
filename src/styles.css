@@ -465,7 +465,14 @@
   .record-open { grid-column: 2; grid-row: 1; }
   .site-footer > div { display: grid; }
   .document-meta { flex-wrap: wrap; }
-  .scp-page { width: calc(100% - 1rem); margin-block: .5rem; padding-inline: 1.5rem; }
+  .scp-page {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    padding-inline: 1.5rem;
+    background: transparent;
+    box-shadow: none;
+  }
   .scp-page::before { display: none; }
   .scp-header::after { position: static; display: inline-block; margin-top: .8rem; }
   .custom-record { height: calc(100vh - 82px); }
