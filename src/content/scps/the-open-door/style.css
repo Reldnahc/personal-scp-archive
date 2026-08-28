@@ -46,6 +46,12 @@
 
 .article-body .test-record .transcript { margin-bottom: .3rem; }
 
+.article-body .case-meta {
+  margin-block: .4rem;
+  color: var(--ink-faded);
+  font-size: .875rem;
+}
+
 .article-body blockquote {
   margin: 1.55rem 0;
   padding: 1rem 1.3rem;
