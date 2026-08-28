@@ -156,10 +156,22 @@ test('Archive remains compact and free of horizontal overflow at responsive widt
   }
 });
 
-test('each archive row has one article link while retaining visible designation and arrow', async ({ page }) => {
+test('each archive row has one stretched article link while its filters remain independent', async ({ page }) => {
   await goTo(page, '/archive');
   const row = page.locator('.record-row').first();
   await expect(row.locator('a')).toHaveCount(1);
   await expect(row.locator('.record-id strong')).toBeVisible();
   await expect(row.locator('.record-open')).toHaveAttribute('aria-hidden', 'true');
+
+  const articleHref = await row.getByRole('link').getAttribute('href');
+  const bounds = await row.boundingBox();
+  if (!articleHref || !bounds) throw new Error('Archive row is not measurable or has no article destination.');
+  await page.mouse.click(bounds.x + 24, bounds.y + 24);
+  await expect(page).toHaveURL(new RegExp(`${articleHref.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i'));
+
+  await page.goBack();
+  const filter = page.locator('.record-row').first().locator('.record-summary li button').first();
+  const tag = (await filter.innerText()).trim();
+  await filter.click();
+  await expect(page).toHaveURL(new RegExp(`#\/archive\?.*tag=${encodeURIComponent(tag)}`, 'i'));
 });
