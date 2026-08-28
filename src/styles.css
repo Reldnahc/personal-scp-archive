@@ -451,7 +451,7 @@
   .site-header nav { gap: .7rem; }
   .page { width: min(100% - 1.5rem, 1120px); }
   .archive-cover { min-height: 500px; outline: 0; padding-inline: 1.55rem; }
-  .archive-cover::before { inset: 1rem; border: 1px solid rgba(160,145,106,.38); }
+  .archive-cover::before { display: none; }
   .cover-status { top: 2rem; right: 1.35rem; transform: rotate(9deg); }
   .cover-status span { padding: .25rem .55rem; font-size: .8125rem; }
   .cover-controls { grid-template-columns: minmax(13rem, 15rem); margin-top: 2.25rem; }

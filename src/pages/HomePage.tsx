@@ -8,7 +8,7 @@ export function HomePage({ articleCount }: { articleCount: number }) {
         <div className="cover-status" aria-label="Restricted circulation">
           <span>Restricted</span>
         </div>
-        <p className="cover-code">REGISTRY 7 / RESTRICTED</p>
+        <p className="cover-code">REGISTRY 7</p>
         <div className="cover-seal" aria-hidden="true"><span>SCP</span><b>AI</b></div>
         <header className="cover-title">
           <p>Office of Anomalous Materials</p>
