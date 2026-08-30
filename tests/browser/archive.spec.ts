@@ -25,7 +25,7 @@ test('home opens the Archive and route focus reaches its heading', async ({ page
 test('search, class, and tag filters update results and the hash query', async ({ page }) => {
   await goTo(page, '/archive');
   const rows = page.locator('.record-row');
-  await expect(rows).toHaveCount(13);
+  await expect(rows).toHaveCount(15);
 
   const search = page.getByRole('searchbox', { name: 'Search records' });
   await search.fill('The Long Way');
