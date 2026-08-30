@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-8457",
+  "slug": "further-reading",
+  "title": "Further Reading",
+  "objectClass": "Euclid",
+  "description": "Unrelated nonfiction books contain citations whose attempted verification may cause the cited sources and their histories to become real.",
+  "tags": [
+    "document",
+    "reality-alteration",
+    "bibliographic",
+    "historical"
+  ],
+  "dateAdded": "2026-08-30",
+  "status": "published",
+  "contentWarnings": [
+    "human biological material",
+    "implied deaths",
+    "reality alteration"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

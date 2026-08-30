@@ -2,6 +2,32 @@
   "generated": true,
   "articles": [
     {
+      "id": "SCP-AI-8457",
+      "slug": "further-reading",
+      "title": "Further Reading",
+      "objectClass": "Euclid",
+      "description": "Unrelated nonfiction books contain citations whose attempted verification may cause the cited sources and their histories to become real.",
+      "tags": [
+        "document",
+        "reality-alteration",
+        "bibliographic",
+        "historical"
+      ],
+      "dateAdded": "2026-08-30",
+      "status": "published",
+      "contentWarnings": [
+        "human biological material",
+        "implied deaths",
+        "reality alteration"
+      ],
+      "sources": [],
+      "mode": "standard",
+      "hasStyle": false,
+      "hasScript": false,
+      "contentPath": "generated/scps/further-reading/index.html",
+      "assetBase": "generated/scps/further-reading/"
+    },
+    {
       "id": "SCP-AI-6035",
       "slug": "three-crossings",
       "title": "Three Crossings",

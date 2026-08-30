@@ -130,6 +130,24 @@
         { "name": "Records and Information Security Administration", "surname": null, "role": "Foundation records authority" }
       ]
     },
+    "further-reading": {
+      "reviewed": true,
+      "names": [
+        { "name": "Philip R. Amsden", "surname": "Amsden", "role": "attributed historian of the first recovered instance" },
+        { "name": "North Country Academic Press", "surname": null, "role": "alleged publisher of the first recovered instance" },
+        { "name": "Harold V. Larkin", "surname": "Larkin", "role": "engineer established by the first documented manifestation" },
+        { "name": "E. Marwick", "surname": "Marwick", "role": "cited author established during controlled verification" },
+        { "name": "J. L. Tolsen", "surname": "Tolsen", "role": "cited author established during controlled verification" },
+        { "name": "Dr. Mara Desai", "surname": "Desai", "role": "Foundation researcher who recommends ending verification trials" },
+        { "name": "North American Materials Reliability Consortium", "surname": null, "role": "organization established by Utilization Trial 4" },
+        { "name": "T. Venn", "surname": "Venn", "role": "author cited in the Utilization Trial 4 paper" },
+        { "name": "B. Okafor", "surname": "Okafor", "role": "author cited in the Utilization Trial 4 paper" },
+        { "name": "S. Leung", "surname": "Leung", "role": "author cited in the Utilization Trial 4 paper" },
+        { "name": "Federal Commission on the Lake Hart Tunnel Disaster", "surname": null, "role": "future commission named in an anomalous citation" },
+        { "name": "Lake Hart Regional Transit Tunnel", "surname": null, "role": "proposed transit project established after a future-citation search" },
+        { "name": "Research Assistant Colin Marsh", "surname": "Marsh", "role": "Foundation assistant who searches the future citation" }
+      ]
+    },
     "the-open-door": {
       "reviewed": true,
       "names": [
