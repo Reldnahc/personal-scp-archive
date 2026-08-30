@@ -1,0 +1,22 @@
+{
+  "id": "SCP-AI-6035",
+  "slug": "three-crossings",
+  "title": "Three Crossings",
+  "objectClass": "Keter",
+  "description": "A reproducible process causes reflected mechanical systems to undergo a physically plausible failure after three crossings with a metal object.",
+  "tags": [
+    "mechanical",
+    "ritual",
+    "structural",
+    "historical"
+  ],
+  "dateAdded": "2026-08-30",
+  "status": "published",
+  "contentWarnings": [
+    "animal death",
+    "fatal accidents",
+    "injury"
+  ],
+  "sources": [],
+  "mode": "standard"
+}

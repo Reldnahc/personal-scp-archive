@@ -114,6 +114,13 @@
         { "name": "Foundation Department of Applied Physics", "surname": null, "role": "Foundation scientific department" }
       ]
     },
+    "three-crossings": {
+      "reviewed": true,
+      "names": [
+        { "name": "Dr. Selin Karaca", "surname": "Karaca", "role": "Foundation archaeological consultant" },
+        { "name": "Technician Aaron Feld", "surname": "Feld", "role": "Foundation technician involved in an accidental activation" }
+      ]
+    },
     "for-context": {
       "reviewed": true,
       "names": [
